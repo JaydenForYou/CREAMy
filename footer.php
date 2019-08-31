@@ -14,7 +14,7 @@ $demo = $qurl.'/demo.js';
 <footer class="site-footer">
   <div class="container d-flex justify-content-sm-between justify-content-center text-center">
     <div class="copyright">
-      <p>Powered by Ghost. Copyright &copy; 2019. Crafted with JaydenForU.</p>
+      <p>Powered by Ghost. Copyright &copy; 2019. Crafted with <a href='https://github.com/JaydenForYou/JaydenForU/' >JaydenForU</a>.</p>
     </div>
     <nav class="social-links d-none d-sm-block">
       <ul>
