@@ -10,4 +10,4 @@
 - 无后端评论系统（[Valine](https://valine.js.org/ "Valine")）
 
 ## How to user Valine
-[前往这里以](https://valine.js.org/quickstart.html "Click Here")获取APP ID 和 APP Key，然后再去后台设置相应的选项即可。
+[前往这里](https://valine.js.org/quickstart.html "Click Here")以获取APP ID 和 APP Key，然后再去后台设置相应的选项即可。
