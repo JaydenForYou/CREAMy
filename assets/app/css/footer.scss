@@ -1,0 +1,36 @@
+/**
+  @Author 淮城一只猫
+  @Date 2019-08-09
+  @Name 主题页脚
+ */
+
+.site-warp {
+  .site-footer {
+    padding: 15px 0;
+    .copyright {
+      display: flex;
+      flex-wrap: wrap-reverse;
+      p {
+        font-size: 13px;
+        color: #b9b8b3;
+        font-weight: 600;
+        line-height: 22px;
+      }
+    }
+    .social-links {
+      list-style: none;
+      ul {
+        margin: 0;
+        padding: 0;
+        .social-link {
+          display: inline-block;
+          margin-right: 15px;
+          a {
+            color: #b9b8b3;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+}
