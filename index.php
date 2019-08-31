@@ -68,7 +68,7 @@ if(!empty($this->options->qiniu)){
                 <h3 class="post-card-title"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h3>
               </header>
               <section class="post-card-excerpt">
-                <p><?php $this->excerpt(70, '- 点击阅读剩余部分 -'); ?></p>
+                <p><?php $this->excerpt(50, '- 点击阅读剩余部分 -'); ?></p>
               </section>
               <footer class="post-meta">
                 <ul class="author-list">
