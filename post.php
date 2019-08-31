@@ -8,7 +8,7 @@ if (!null==$this->fields->thumbnail) {
 }
 ?>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<section class="site-hero <?=$class?>" <?php if(!empty($this->fields->thumbnail)): ?>style="background-image: url(<?php echo $this->fields->thumbnail ?>)"><?php endif ?>> <!-- 没有图片 添加 .responsive-title-no-img -->
+<section class="site-hero <?=$class?>" <?php if(!empty($this->fields->thumbnail)): ?>style="background-image: url(<?php echo $this->fields->thumbnail ?>)"><?php endif ?> <!-- 没有图片 添加 .responsive-title-no-img -->
   <div class="container">
     <div class="hero-content">
       <h1 class="post-full-title"><?php $this->title() ?></h1>
