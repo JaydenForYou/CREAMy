@@ -355,10 +355,12 @@ function themeConfig($form)
   $twitter = new Typecho_Widget_Helper_Form_Element_Text('twitter', NULL, NULL, _t('推特地址'), _t('输入推特地址'));
   $tongji = new Typecho_Widget_Helper_Form_Element_Text('tongji', NULL, NULL, _t('百度统计URL'), _t('输入百度统计URL'));
   $tips = new Typecho_Widget_Helper_Form_Element_Text('tips', NULL, NULL, _t('前台公告'), _t(''));
+  $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('ICP备案号'), _t(''));
   $qiniu = new Typecho_Widget_Helper_Form_Element_Text('qiniu', NULL, NULL, _t('七牛云替换全站镜像'), _t('需要带http/https'));
   $form->addInput($logoUrl);
   $form->addInput($bgUrl);
   $form->addInput($tips);
+  $form->addInput($beian);
   $form->addInput($qiniu);
   $form->addInput($tongji);
   $form->addInput($weibo);
@@ -404,3 +406,4 @@ function get_post_view($archive)
   }
   echo $row['views'];
 }
+
