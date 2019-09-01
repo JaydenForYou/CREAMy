@@ -11,6 +11,7 @@ $pivot = $qurl.'/assets/pivot/pivot.js';
 $appminjs = $qurl.'/assets/app/js/app.min.js?ver=1153';
 $demo = $qurl.'/demo.js';
 $lazyload = $qurl.'/assets/app/js/lazyload.js';
+$handler = $qurl.'/handler.js';
 ?>
 <footer class="site-footer">
   <div class="container d-flex justify-content-sm-between justify-content-center text-center">
@@ -61,7 +62,8 @@ $lazyload = $qurl.'/assets/app/js/lazyload.js';
 <script type="text/javascript" src="<?=$appminjs?>"></script>
 <script type="text/javascript" src="<?=$demo?>"></script>
 <?php if(Utils::isEnabled('enableLazyload','JConfig')): ?>
-<script src="<?=$lazyload?>"></script>
+<script type="text/javascript" src="<?=$handler?>"></script>
+<script type="text/javascript" src="<?=$lazyload?>"></script>
 <script>
   $("div.lazyload").lazyload();
 </script>
@@ -74,3 +76,4 @@ $lazyload = $qurl.'/assets/app/js/lazyload.js';
 <?php $this->footer(); ?>
 </body>
 </html>
+
