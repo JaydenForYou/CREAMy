@@ -61,7 +61,7 @@ $handler = $qurl.'/handler.js';
 <script type="text/javascript" src="<?=$pivot?>"></script>
 <script type="text/javascript" src="<?=$appminjs?>"></script>
 <script type="text/javascript" src="<?=$demo?>"></script>
-<?php if(Utils::isEnabled('enableLazyload','JConfig')): ?>
+<?php if(Utils::isEnabled('enableLazyload','JConfig')&&$this->is('index')): ?>
 <script type="text/javascript" src="<?=$lazyload?>"></script>
 <script>
   $("div.lazyload").lazyload();
