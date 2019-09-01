@@ -62,7 +62,6 @@ $handler = $qurl.'/handler.js';
 <script type="text/javascript" src="<?=$appminjs?>"></script>
 <script type="text/javascript" src="<?=$demo?>"></script>
 <?php if(Utils::isEnabled('enableLazyload','JConfig')): ?>
-<script type="text/javascript" src="<?=$handler?>"></script>
 <script type="text/javascript" src="<?=$lazyload?>"></script>
 <script>
   $("div.lazyload").lazyload();
