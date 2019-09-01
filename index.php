@@ -47,9 +47,9 @@ if(!empty($this->options->qiniu)){
       <div class="post-list">
         <?php while ($this->next()): ?>
         <?php if ($this->sequence % 2 == 0): ?>
-        <article class="post-card align-right">
+        <article class="post-card align-left">
           <?php else: ?>
-          <article class="post-card align-left">
+          <article class="post-card align-right">
             <?php endif ?>
             <a href="<?php $this->permalink() ?>" class="post-card-image-link">
               <div class="post-card-image" style="background-image: url(<?php
