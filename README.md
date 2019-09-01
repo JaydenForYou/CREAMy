@@ -13,9 +13,7 @@
 [前往这里以](https://valine.js.org/quickstart.html "Click Here")获取APP ID 和 APP Key，然后再去后台设置相应的选项即可。
 
 ## 更新日志
-```
-* v 1.0.3
+* v1.0.3
 * 优化代码
 * 页面小改动
 * 添加图片懒加载功能
-```
