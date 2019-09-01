@@ -344,7 +344,7 @@ function themeConfig($form)
   echo '<div class="tip"><span class="current-ver"><strong><code>Ver ' . JaydenForU_VERSION . '</code></strong></span>
     <div class="tip-header"><h1>Theme-JaydenForYou</h1></div>
     <p>感谢选择使用 <code>JaydenForYou</code> </p>
-    <p>查看<a href="#">帮助手册</a> <a href="#">issue</a></p>
+    <p>查看<a href="//iobiji.com/zi-ji-xie-de-di-yi-kuan-typechozhu-ti-jaydenforu/">帮助手册</a> <a href="https://github.com/JaydenForYou/JaydenForU/issues">issue</a></p>
 </div>';
   $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
   $bgUrl = new Typecho_Widget_Helper_Form_Element_Text('bgUrl', NULL, NULL, _t('首页背景图片'), _t('在这里填入一个图片 URL 地址'));
