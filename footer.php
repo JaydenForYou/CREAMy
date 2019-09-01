@@ -48,6 +48,11 @@ $demo = $qurl.'/demo.js';
 </div>
 <div id="return-to-top" class="animated"><i class="fas fa-angle-double-up"></i></div>
 </div>
+<script>
+    var APPID = '<?php $this->options->APPID()?>';
+    var APPKEY = '<?php $this->options->APPKEY()?>';
+    var tongji = '<?php $this->options->tongji()?>';
+</script>
 <script type="text/javascript" src="<?=$jquery?>"></script>
 <script src='//cdn.iobiji.com/usr/themes/JaydenForU/assets/app/js/casper.js'></script>
 <script type="text/javascript" src="<?=$bootstrapjs?>"></script>
