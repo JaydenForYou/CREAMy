@@ -10,6 +10,7 @@ $bootstrapjs = $qurl.'/assets/bootstrap/bootstrap.js';
 $pivot = $qurl.'/assets/pivot/pivot.js';
 $appminjs = $qurl.'/assets/app/js/app.min.js?ver=1153';
 $demo = $qurl.'/demo.js';
+$lazyload = $qurl.'/assets/app/js/lazyload.js';
 ?>
 <footer class="site-footer">
   <div class="container d-flex justify-content-sm-between justify-content-center text-center">
@@ -59,6 +60,12 @@ $demo = $qurl.'/demo.js';
 <script type="text/javascript" src="<?=$pivot?>"></script>
 <script type="text/javascript" src="<?=$appminjs?>"></script>
 <script type="text/javascript" src="<?=$demo?>"></script>
+<?php if(Utils::isEnabled('enableLazyload','JConfig')): ?>
+<script src="<?=$lazyload?>"></script>
+<script>
+  $("div.lazyload").lazyload();
+</script>
+<?php endif; ?>
 <script>
   $('#toast').toast({
     autohide: false

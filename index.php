@@ -4,7 +4,7 @@
  *
  * @package JaydenForU
  * @author Jayden
- * @version 1.0.2
+ * @version 1.0.3
  * @link https://iobiji.com
  */
 
@@ -33,11 +33,11 @@ if(!empty($this->options->qiniu)){
   $qurl = $this->options->themeUrl;
 }
 ?>
-<section class="site-hero responsive-title-img" style="background-image: url('<?php $this->options->bgUrl(); ?>');">
+<section class="site-hero responsive-title-img" style="background-image: url('<?php echo Utils::getBackground() ?>');">
   <div class="container">
     <div class="hero-content">
-      <h1 class="site-name"><?php $this->options->title(); ?></h1>
-      <h2 class="site-description"><?php $this->options->description() ?></h2>
+      <h1 class="site-name"><?php if ($this->is('category')): ?><?php $this->category('',false); ?><? else:?><?php $this->options->title(); ?><?php if(!null==$this->options->Subtitle){echo $this->options->Subtitle;} ?><? endif ?></h1>
+      <h2 class="site-description"><?php if ($this->is('category')): ?>A collection of <?php echo Utils::getCnums($this->category) ?> 篇文章 <? else:?><?php if(!null==$this->options->Subtitle){echo $this->options->Subtitle;} ?><? endif ?></h2>
     </div>
   </div>
 </section>
@@ -52,13 +52,23 @@ if(!empty($this->options->qiniu)){
           <article class="post-card align-right">
             <?php endif ?>
             <a href="<?php $this->permalink() ?>" class="post-card-image-link">
+              <?php if(Utils::isEnabled('enableLazyload','JConfig')): ?>
+                <div class="post-card-image lazyload" data-src="<?php
+                if ($this->fields->thumbnail) {
+                  echo $this->fields->thumbnail;
+                } else {
+                  echo Utils::getThumbnail();
+                }
+                ?>" style="background-image: url(<?php echo Utils::getThumbnail(); ?>)"></div>
+              <?php else: ?>
               <div class="post-card-image" style="background-image: url(<?php
               if ($this->fields->thumbnail) {
                 echo $this->fields->thumbnail;
               } else {
-                echo $qurl.'/assets/images/4.jpg';
+                echo Utils::getThumbnail();
               }
               ?>)"></div>
+              <?php endif ?>
             </a>
             <div class="post-card-content">
               <header>
@@ -68,7 +78,12 @@ if(!empty($this->options->qiniu)){
                 <h3 class="post-card-title"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h3>
               </header>
               <section class="post-card-excerpt">
-                <p><?php $this->excerpt(50, '- 点击阅读剩余部分 -'); ?></p>
+                <p><?php
+                  if($this->fields->previewContent)
+                    $this->fields->previewContent();
+                  else
+                    $this->excerpt(55, '...');
+                  ?></p>
               </section>
               <footer class="post-meta">
                 <ul class="author-list">

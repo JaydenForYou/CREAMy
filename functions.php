@@ -1,7 +1,8 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-define('JaydenForU_VERSION', '1.0.2');
+define('JaydenForU_VERSION', '1.0.3');
 define('__TYPECHO_GRAVATAR_PREFIX__', Helper::options()->Gravatar ? Helper::options()->Gravatar : 'https://cdn.v2ex.com/gravatar/');
+require_once 'lib/Utils.php';
 if (!empty(Helper::options()->cdn)) {
   define('__TYPECHO_UPLOAD_URL__', $_SERVER['REQUEST_SCHEME'] . '://' . Helper::options()->cdn);
 }
@@ -356,10 +357,12 @@ function themeConfig($form)
   $tongji = new Typecho_Widget_Helper_Form_Element_Text('tongji', NULL, NULL, _t('百度统计URL'), _t('输入百度统计URL'));
   $tips = new Typecho_Widget_Helper_Form_Element_Text('tips', NULL, NULL, _t('前台公告'), _t(''));
   $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('ICP备案号'), _t(''));
+  $Subtitle = new Typecho_Widget_Helper_Form_Element_Text('Subtitle', NULL, NULL, _t('站点副标题'), _t(''));
   $qiniu = new Typecho_Widget_Helper_Form_Element_Text('qiniu', NULL, NULL, _t('七牛云替换全站镜像'), _t('需要带http/https'));
   $form->addInput($logoUrl);
   $form->addInput($bgUrl);
   $form->addInput($tips);
+  $form->addInput($Subtitle);
   $form->addInput($beian);
   $form->addInput($qiniu);
   $form->addInput($tongji);
@@ -369,13 +372,23 @@ function themeConfig($form)
   $form->addInput($cdn);
   $form->addInput($APPID);
   $form->addInput($APPKEY);
+  $JConfig = new Typecho_Widget_Helper_Form_Element_Checkbox('JConfig',
+      array(
+          'enableLazyload' => '开启图片懒加载<a href="https://appelsiini.net/projects/lazyload" target="_blank">lazyload</a>'
+      ),
+      null,
+      '开关设置'
+  );
+  $form->addInput($JConfig->multiMode());
 }
 
 function themeFields($layout)
 {
   //$showTOC = new Typecho_Widget_Helper_Form_Element_Radio('showTOC', array(true => _t('开启'), false => _t('关闭')), false, _t('文章目录'), _t('仅会解析h2和h3标题，最多解析两层'));
+  $previewContent = new Typecho_Widget_Helper_Form_Element_Text('previewContent', NULL, NULL, _t('文章摘要'), _t('设置文章的预览内容，留空自动截取文章前55个字。'));
   $thumbnail = new Typecho_Widget_Helper_Form_Element_Text('thumbnail', NULL, NULL, _t('文章/页面缩略图Url'), _t('需要带上http(s)://'));
   $layout->addItem($thumbnail);
+  $layout->addItem($previewContent);
   //$layout->addItem($showTOC);
 }
 
@@ -406,4 +419,3 @@ function get_post_view($archive)
   }
   echo $row['views'];
 }
-
