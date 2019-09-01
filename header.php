@@ -41,11 +41,6 @@ $appmin = $qurl.'/assets/app/css/app.min.css?ver=1153';
   <link type="text/css" rel="stylesheet"
         href="<?=$appmin?>"/>
   <?php $this->header(); ?>
-  <script>
-    var APPID = '<?php $this->options->APPID()?>';
-    var APPKEY = '<?php $this->options->APPKEY()?>';
-    var tongji = '<?php $this->options->tongji()?>';
-  </script>
 </head>
 <body class="home-template"><!-- 添加 .home-template 以便识别模板为首页 -->
 <div class="site-warp">
