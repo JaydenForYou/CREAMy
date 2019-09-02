@@ -1,8 +1,21 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php
+if(!empty($this->options->qiniu)){
+  $qurl = str_replace($this->options->siteUrl,$this->options->qiniu.'/',$this->options->themeUrl);
+}else{
+  $qurl = $this->options->themeUrl;
+}
+$jquery = $qurl.'/assets/jquery/jquery.js';
+$bootstrapjs = $qurl.'/assets/bootstrap/bootstrap.js';
+$pivot = $qurl.'/assets/pivot/pivot.js';
+$appminjs = $qurl.'/assets/app/js/app.min.js?ver=1153';
+$demo = $qurl.'/demo.js';
+$lazyload = $qurl.'/assets/app/js/lazyload.js';
+?>
 <footer class="site-footer">
   <div class="container d-flex justify-content-sm-between justify-content-center text-center">
     <div class="copyright">
-      <p><?php if(!null==$this->options->beian){echo $this->options->beian.' | ';}?>Powered by TYPECHO. Copyright &copy; 2019. Crafted with <a href='https://github.com/JaydenForYou/JaydenForU/' >JaydenForU</a>.</p>
+      <p><?php if(!null==$this->options->beian):?><a href="http://www.miitbeian.gov.cn/"><?php $this->options->beian() ?></a><?php endif ?> | Powered by TYPECHO. Copyright &copy; 2019. Crafted with <a href='https://github.com/JaydenForYou/JaydenForU/' >JaydenForU</a>.</p>
     </div>
     <nav class="social-links d-none d-sm-block">
       <ul>
@@ -41,14 +54,14 @@
     var APPKEY = '<?php $this->options->APPKEY()?>';
     var tongji = '<?php $this->options->tongji()?>';
 </script>
-<script type="text/javascript" src="<?php Utils::getFooter(jquery); ?>"></script>
+<script type="text/javascript" src="<?=$jquery?>"></script>
 <script src='//cdn.iobiji.com/usr/themes/JaydenForU/assets/app/js/casper.js'></script>
-<script type="text/javascript" src="<?php Utils::getFooter(bootstrapjs); ?>"></script>
-<script type="text/javascript" src="<?php Utils::getFooter(pivot); ?>"></script>
-<script type="text/javascript" src="<?php Utils::getFooter(appminjs); ?>"></script>
-<script type="text/javascript" src="<?php Utils::getFooter(demo); ?>"></script>
-<?php if(Utils::isEnabled('enableLazyload','JConfig')&&$this->is('index')): ?>
-<script type="text/javascript" src="<?php Utils::getFooter(lazyload); ?>"></script>
+<script type="text/javascript" src="<?=$bootstrapjs?>"></script>
+<script type="text/javascript" src="<?=$pivot?>"></script>
+<script type="text/javascript" src="<?=$appminjs?>"></script>
+<script type="text/javascript" src="<?=$demo?>"></script>
+<?php if(Utils::isEnabled('enableLazyload','JConfig')): ?>
+  <script src="<?=$lazyload?>"></script>
 <script>
   $("div.lazyload").lazyload();
 </script>
