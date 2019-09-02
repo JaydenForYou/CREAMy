@@ -11,6 +11,8 @@ $pivot = $qurl.'/assets/pivot/pivot.js';
 $appminjs = $qurl.'/assets/app/js/app.min.js?ver=1153';
 $demo = $qurl.'/demo.js';
 $lazyload = $qurl.'/assets/app/js/lazyload.js';
+$casper = $qurl.'/assets/app/js/casper.js';
+$comments = $qurl.'/assets/app/js/comments.js';
 ?>
 <footer class="site-footer">
   <div class="container d-flex justify-content-sm-between justify-content-center text-center">
@@ -55,7 +57,8 @@ $lazyload = $qurl.'/assets/app/js/lazyload.js';
     var tongji = '<?php $this->options->tongji()?>';
 </script>
 <script type="text/javascript" src="<?=$jquery?>"></script>
-<script src='//cdn.iobiji.com/usr/themes/JaydenForU/assets/app/js/casper.js'></script>
+<script src='<?=$casper?>'></script>
+<script src='<?=$comments?>'></script>
 <script type="text/javascript" src="<?=$bootstrapjs?>"></script>
 <script type="text/javascript" src="<?=$pivot?>"></script>
 <script type="text/javascript" src="<?=$appminjs?>"></script>

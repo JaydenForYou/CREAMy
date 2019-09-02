@@ -45,8 +45,14 @@ if (!null==$this->fields->thumbnail) {
     <?php if ($this->allow('comment')): ?>
       <div class="post-comments">
         <!-- 这里放置评论框 -->
-        <div id="vcomments" class="v"></div>
+        <?php if (Utils::isEnabled('enableComments', 'JConfig')): ?>
+          <?php $this->need('comments.php'); ?>
+        <?php else: ?>
+          <div id="vcomments" class="v"></div>
+        <?php endif ?>
       </div>
+    <?php else: ?>
+      <span style="font-size: 20px;display: block;user-select: none;"><i class="iconfont icon-aria-close" sytle="font-size:20px"></i> 评论关闭了哟</span>
     <?php endif; ?>
   </div>
 </main>

@@ -3,6 +3,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 define('JaydenForU_VERSION', '1.0.4');
 define('__TYPECHO_GRAVATAR_PREFIX__', Helper::options()->Gravatar ? Helper::options()->Gravatar : 'https://cdn.v2ex.com/gravatar/');
 require_once 'lib/Utils.php';
+require_once 'lib/Comments.php';
 if (!empty(Helper::options()->cdn)) {
   define('__TYPECHO_UPLOAD_URL__', $_SERVER['REQUEST_SCHEME'] . '://' . Helper::options()->cdn);
 }
@@ -374,7 +375,8 @@ function themeConfig($form)
   $form->addInput($APPKEY);
   $JConfig = new Typecho_Widget_Helper_Form_Element_Checkbox('JConfig',
       array(
-          'enableLazyload' => '开启图片懒加载<a href="https://appelsiini.net/projects/lazyload" target="_blank">lazyload</a>'
+          'enableLazyload' => '开启图片懒加载<a href="https://appelsiini.net/projects/lazyload" target="_blank">lazyload</a>',
+          'enableComments' => '开启主题自带评论系统'
       ),
       null,
       '开关设置'

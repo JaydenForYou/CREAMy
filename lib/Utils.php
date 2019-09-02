@@ -21,44 +21,17 @@ class Utils
     $JConfig = Helper::options()->JConfig;
     $options = Helper::options();
     $enableLazyload = self::isEnabled('enableLazyload', 'JConfig');
+    $enableComments = self::isEnabled('enableComments', 'JConfig');
 
     $THEME_CONFIG = json_encode((object)array(
         "THEME_VERSION" => JaydenForU_VERSION,
         "SITE_URL" => rtrim($options->siteUrl, "/"),
         "THEME_URL" => $options->themeUrl,
-        "ENABLE_LAZYLOAD" => $enableLazyload
+        "ENABLE_LAZYLOAD" => $enableLazyload,
+        "ENABLE_Comments" => $enableComments
     ));
 
     echo "<script>window.THEME_CONFIG = $THEME_CONFIG</script>\n";
-  }
-
-  /**
-   * 将部分主题配置中的string数据转换为array或键值对
-   *
-   * @param string $item 设置名
-   * @param bool $mode 转换类型
-   *
-   * @return array|bool
-   */
-  public static function convertConfigData($item, $mode)
-  {
-    $options = Helper::options();
-    //根据$item获取对应的设置中的string数据
-    $data = $options->$item ? $options->$item : false;
-    $content = null;
-    if (!$data) {
-      //不存在对应的设置名或内容为空
-      $content = false;
-    } else {
-      if ($mode) {
-        //转换为数组
-        $content = json_decode("[" . $data . "]", true);
-      } else {
-        //转换为键值对
-        $content = json_decode(trim("{" . $data . "}"), true);
-      }
-    }
-    return $content;
   }
 
   /**
@@ -135,6 +108,30 @@ class Utils
   }
 
   /**
+   * 获取评论者GRAVATAR头像
+   */
+  public static function gGravatar($author)
+  {
+    $db = Typecho_Db::get();
+    $cx = $db->fetchRow($db->select()->from('table.comments')->where('table.comments.author = ?', $author))['mail'];
+    if (defined('__TYPECHO_GRAVATAR_PREFIX__')) {
+      $url = __TYPECHO_GRAVATAR_PREFIX__;
+    } else {
+      $url = $isSecure ? 'https://secure.gravatar.com' : 'http://www.gravatar.com';
+      $url .= '/avatar/';
+    }
+
+    if (!empty($cx)) {
+      $url .= md5(strtolower(trim($cx)));
+    }
+
+    $url .= '?s=60';
+    $url .= '&amp;r=G';
+    $url .= '&amp;d=default';
+    return $url;
+  }
+
+  /**
    * 获取头部
    */
   public static function getHeader($csspath){
@@ -146,11 +143,11 @@ class Utils
     }
 
     if($csspath=='awesome'){
-      return $qurl.'/assets/fonts/css/font-awesome.css';
+      echo $qurl.'/assets/fonts/css/font-awesome.css';
     }elseif($csspath=='bootstrap'){
-      return $qurl.'/assets/bootstrap/bootstrap.css';
+      echo $qurl.'/assets/bootstrap/bootstrap.css';
     } elseif($csspath=='appmin'){
-      return $qurl.'/assets/app/css/app.min.css?ver=1153';
+      echo $qurl.'/assets/app/css/app.min.css?ver=1153';
     }
   }
 
@@ -166,17 +163,17 @@ class Utils
     }
 
     if($jspath=='jquery'){
-      return $qurl.'/assets/jquery/jquery.js';
+      echo $qurl.'/assets/jquery/jquery.js';
     }elseif($jspath=='bootstrapjs'){
-      return $qurl.'/assets/bootstrap/bootstrap.js';
+      echo $qurl.'/assets/bootstrap/bootstrap.js';
     }elseif($jspath=='pivot'){
-      return $qurl.'/assets/pivot/pivot.js';
+      echo $qurl.'/assets/pivot/pivot.js';
     }elseif($jspath=='appminjs'){
-      return $qurl.'/assets/app/js/app.min.js?ver=1153';
+      echo $qurl.'/assets/app/js/app.min.js?ver=1153';
     }elseif($jspath=='demo'){
-      return $qurl.'/demo.js';
+      echo $qurl.'/demo.js';
     }elseif($jspath=='lazyload'){
-      return $qurl.'/assets/app/js/lazyload.js';
+      echo $qurl.'/assets/app/js/lazyload.js';
     }
   }
 
