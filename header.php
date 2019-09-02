@@ -27,10 +27,10 @@
     <link rel="shortcut icon" href="<?= $this->options->logoUrl ?>" type="image/png"/>
   <?php endif; ?>
   <link type="text/css" rel="stylesheet"
-        href="<?php echo Utils::getHeader(awesome); ?>"/>
-  <link type="text/css" rel="stylesheet" href="<?php echo Utils::getHeader(bootstrap); ?>"/>
+        href="<?php Utils::getHeader(awesome); ?>"/>
+  <link type="text/css" rel="stylesheet" href="<?php Utils::getHeader(bootstrap); ?>"/>
   <link type="text/css" rel="stylesheet"
-        href="<?php echo Utils::getHeader(appmin); ?>"/>
+        href="<?php Utils::getHeader(appmin); ?>"/>
   <?php $this->header(); ?>
 </head>
 <body class="home-template"><!-- 添加 .home-template 以便识别模板为首页 -->
