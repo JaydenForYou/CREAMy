@@ -1,14 +1,4 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php
-if(!empty($this->options->qiniu)){
-  $qurl = str_replace($this->options->siteUrl,$this->options->qiniu.'/',$this->options->themeUrl);
-}else{
-  $qurl = $this->options->themeUrl;
-}
-$awesome = $qurl.'/assets/fonts/css/font-awesome.css';
-$bootstrap = $qurl.'/assets/bootstrap/bootstrap.css';
-$appmin = $qurl.'/assets/app/css/app.min.css?ver=1153';
-?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -37,10 +27,10 @@ $appmin = $qurl.'/assets/app/css/app.min.css?ver=1153';
     <link rel="shortcut icon" href="<?= $this->options->logoUrl ?>" type="image/png"/>
   <?php endif; ?>
   <link type="text/css" rel="stylesheet"
-        href="<?=$awesome?>"/>
-  <link type="text/css" rel="stylesheet" href="<?=$bootstrap?>"/>
+        href="<?php Utils::getHeader(awesome); ?>"/>
+  <link type="text/css" rel="stylesheet" href="<?php Utils::getHeader(bootstrap); ?>"/>
   <link type="text/css" rel="stylesheet"
-        href="<?=$appmin?>"/>
+        href="<?php Utils::getHeader(appmin); ?>"/>
   <?php $this->header(); ?>
 </head>
 <body class="home-template"><!-- 添加 .home-template 以便识别模板为首页 -->

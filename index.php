@@ -4,7 +4,7 @@
  *
  * @package JaydenForU
  * @author Jayden
- * @version 1.0.3
+ * @version 1.0.4
  * @link https://iobiji.com
  */
 
@@ -27,13 +27,8 @@ if (ceil($this->getTotal() / $this->parameter->pageSize) == 1) {
   $hiddens = 'hidden';
   $hidden = 'hidden';
 }
-if(!empty($this->options->qiniu)){
-  $qurl = str_replace($this->options->siteUrl,$this->options->qiniu.'/',$this->options->themeUrl);
-}else{
-  $qurl = $this->options->themeUrl;
-}
 ?>
-<section class="site-hero responsive-title-img" style="background-image: url('<?php echo Utils::getBackground() ?>');">
+<section class="site-hero responsive-title-img" style="background-image: url('<?php Utils::getBackground() ?>');">
   <div class="container">
     <div class="hero-content">
       <h1 class="site-name"><?php if ($this->is('category')): ?><?php $this->category('',false); ?><? else:?><?php $this->options->title(); ?><? endif ?></h1>

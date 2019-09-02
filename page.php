@@ -7,19 +7,6 @@ if (!null==$this->fields->thumbnail) {
   $class = 'responsive-title-no-img';
 }
 ?>
-<?php if(Utils::isEnabled('enableLazyload','JConfig')): ?>
-<script>
-  window.onload=function(){
-    var imgs=document.getElementsByTagName('img');
-    for(var i=0;i<imgs.length;i++){
-      var src = document.getElementById(imgs[i]).src;
-      imgs[i].setAttribute('class','lazyload');
-      imgs[i].setAttribute('data-src',src);
-      document.getElementById(imgs[i]).src = "<?php echo Utils::getThumbnail();?>"
-    }
-  }
-</script>
-<?php endif ?>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <section class="site-hero <?=$class?>" <?php if(!null==$this->fields->thumbnail): ?>style="background-image: url(<?php echo $this->fields->thumbnail ?>)"><?php endif ?> <!-- 没有图片 添加 .responsive-title-no-img -->
   <div class="container">
@@ -40,7 +27,7 @@ if (!null==$this->fields->thumbnail) {
   <div class="inner row">
     <article>
       <section class="post-content">
-        <?php $this->content(); ?>
+        <?php Utils::getContent($this->content) ?>
       </section>
     </article>
     <ul class="post-copyright">

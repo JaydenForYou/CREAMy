@@ -28,7 +28,7 @@ if (!null==$this->fields->thumbnail) {
   <div class="inner row">
     <article>
       <section class="post-content">
-        <?php $this->content(); ?>
+        <?php Utils::getContent($this->content) ?>
       </section>
     </article>
     <ul class="post-copyright">

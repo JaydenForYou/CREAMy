@@ -1,6 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-define('JaydenForU_VERSION', '1.0.3');
+define('JaydenForU_VERSION', '1.0.4');
 define('__TYPECHO_GRAVATAR_PREFIX__', Helper::options()->Gravatar ? Helper::options()->Gravatar : 'https://cdn.v2ex.com/gravatar/');
 require_once 'lib/Utils.php';
 if (!empty(Helper::options()->cdn)) {
