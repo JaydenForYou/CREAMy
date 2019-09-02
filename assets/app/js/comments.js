@@ -4,7 +4,7 @@ function onClick(id,author) {
   let action = $("form").attr("action");
   $("#comment-form").attr(action,"comment?parent="+ids);
   $(function(){
-    let inp = $('#textarea');
+    var inp = $('#textarea');
     inp.focus(function(){
       $(this).attr('placeholder','@'+author)
     })
