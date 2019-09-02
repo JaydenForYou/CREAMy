@@ -15,7 +15,7 @@ $lazyload = $qurl.'/assets/app/js/lazyload.js';
 <footer class="site-footer">
   <div class="container d-flex justify-content-sm-between justify-content-center text-center">
     <div class="copyright">
-      <p><?php if(!null==$this->options->beian):?><a href="http://www.miitbeian.gov.cn/"><?php $this->options->beian() ?></a><?php endif ?> | Powered by TYPECHO. Copyright &copy; 2019. Crafted with <a href='https://github.com/JaydenForYou/JaydenForU/' >JaydenForU</a>.</p>
+      <p><?php if(!null==$this->options->beian):?><a href="http://www.miitbeian.gov.cn/"><?php echo $this->options->beian ?></a><?php endif ?> | Powered by TYPECHO. Copyright &copy; 2019. Crafted with <a href='https://github.com/JaydenForYou/JaydenForU/' >JaydenForU</a>.</p>
     </div>
     <nav class="social-links d-none d-sm-block">
       <ul>
