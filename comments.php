@@ -1,5 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php
+echo $this->commentUrl;
 function threadedComments($comments, $options)
 {
   $commentClass = '';
@@ -61,7 +62,7 @@ function threadedComments($comments, $options)
     </p>
   <?php endif ?>
   <div id="<?php $this->respondId(); ?>" class="v">
-    <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
+    <form method="post" action="comment" id="comment-form" role="form">
       <div class="vwrap">
         <div class="vheader item3">
           <input name="author" id="author" placeholder="昵称" value="<?php $this->remember('author'); ?>" class="vnick vinput" type="text" required><input name="mail"
@@ -76,7 +77,7 @@ function threadedComments($comments, $options)
         </div>
         <div class="vcontrol">
           <div class="col col-100 text-right">
-            <button type="submit" title="Cmd|Ctrl+Enter" class="vsubmit vbtn">回复</button>
+            <button id="reply" type="submit" title="Cmd|Ctrl+Enter" class="vsubmit vbtn">回复</button>
           </div>
         </div>
         <div style="display:none;" class="vmark">
