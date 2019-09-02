@@ -33,6 +33,35 @@ class Utils
   }
 
   /**
+   * 将部分主题配置中的string数据转换为array或键值对
+   *
+   * @param string $item 设置名
+   * @param bool $mode 转换类型
+   *
+   * @return array|bool
+   */
+  public static function convertConfigData($item, $mode)
+  {
+    $options = Helper::options();
+    //根据$item获取对应的设置中的string数据
+    $data = $options->$item ? $options->$item : false;
+    $content = null;
+    if (!$data) {
+      //不存在对应的设置名或内容为空
+      $content = false;
+    } else {
+      if ($mode) {
+        //转换为数组
+        $content = json_decode("[" . $data . "]", true);
+      } else {
+        //转换为键值对
+        $content = json_decode(trim("{" . $data . "}"), true);
+      }
+    }
+    return $content;
+  }
+
+  /**
    * 返回主题设置中某项开关的开启/关闭状态
    *
    * @param string $item 项目名
@@ -117,11 +146,11 @@ class Utils
     }
 
     if($csspath=='awesome'){
-      echo $qurl.'/assets/fonts/css/font-awesome.css';
+      return $qurl.'/assets/fonts/css/font-awesome.css';
     }elseif($csspath=='bootstrap'){
-      echo $qurl.'/assets/bootstrap/bootstrap.css';
+      return $qurl.'/assets/bootstrap/bootstrap.css';
     } elseif($csspath=='appmin'){
-      echo $qurl.'/assets/app/css/app.min.css?ver=1153';
+      return $qurl.'/assets/app/css/app.min.css?ver=1153';
     }
   }
 
@@ -137,17 +166,17 @@ class Utils
     }
 
     if($jspath=='jquery'){
-      echo $qurl.'/assets/jquery/jquery.js';
+      return $qurl.'/assets/jquery/jquery.js';
     }elseif($jspath=='bootstrapjs'){
-      echo $qurl.'/assets/bootstrap/bootstrap.js';
+      return $qurl.'/assets/bootstrap/bootstrap.js';
     }elseif($jspath=='pivot'){
-      echo $qurl.'/assets/pivot/pivot.js';
+      return $qurl.'/assets/pivot/pivot.js';
     }elseif($jspath=='appminjs'){
-      echo $qurl.'/assets/app/js/app.min.js?ver=1153';
+      return $qurl.'/assets/app/js/app.min.js?ver=1153';
     }elseif($jspath=='demo'){
-      echo $qurl.'/demo.js';
+      return $qurl.'/demo.js';
     }elseif($jspath=='lazyload'){
-      echo $qurl.'/assets/app/js/lazyload.js';
+      return $qurl.'/assets/app/js/lazyload.js';
     }
   }
 

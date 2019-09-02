@@ -41,14 +41,14 @@
     var APPKEY = '<?php $this->options->APPKEY()?>';
     var tongji = '<?php $this->options->tongji()?>';
 </script>
-<script type="text/javascript" src="<?php Utils::getFooter(jquery); ?>"></script>
+<script type="text/javascript" src="<?php echo Utils::getFooter(jquery); ?>"></script>
 <script src='//cdn.iobiji.com/usr/themes/JaydenForU/assets/app/js/casper.js'></script>
-<script type="text/javascript" src="<?php Utils::getFooter(bootstrapjs); ?>"></script>
-<script type="text/javascript" src="<?php Utils::getFooter(pivot); ?>"></script>
-<script type="text/javascript" src="<?php Utils::getFooter(appminjs); ?>"></script>
-<script type="text/javascript" src="<?php Utils::getFooter(demo); ?>"></script>
-<?php if(Utils::isEnabled('enableLazyload','JConfig')&&$this->is('index')): ?>
-<script type="text/javascript" src="<?php Utils::getFooter(lazyload); ?>"></script>
+<script type="text/javascript" src="<?php echo Utils::getFooter(bootstrapjs); ?>"></script>
+<script type="text/javascript" src="<?php echo Utils::getFooter(pivot); ?>"></script>
+<script type="text/javascript" src="<?php echo Utils::getFooter(appminjs); ?>"></script>
+<script type="text/javascript" src="<?php echo Utils::getFooter(demo); ?>"></script>
+<?php if(Utils::isEnabled('enableLazyload','JConfig') && $this->is('index')): ?>
+<script type="text/javascript" src="<?php echo Utils::getFooter(lazyload); ?>"></script>
 <script>
   $("div.lazyload").lazyload();
 </script>
