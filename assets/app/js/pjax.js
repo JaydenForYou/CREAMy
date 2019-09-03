@@ -10,7 +10,7 @@ function getBaseUrl() {
 }
 
 function Active(){
-    let url = '<?php echo $this->options->siteUrl; ?>';
+    let url = getBaseUrl()+'/';
     if(url!=window.location.href) {
       $(this).attr("class", "nav-link active");
       console.log(window.location.href);
@@ -38,7 +38,6 @@ $(document).pjax('a[href^='+ url +']:not(a[target="_blank"], a[no-pjax])', {
 $(document).on('pjax:start',function() {
   NProgress.start();
   navSwitch();
-  Active()
 });
 $(document).on('pjax:end',function() {
   NProgress.done();
