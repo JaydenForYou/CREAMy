@@ -640,3 +640,4 @@ function parseUA($ua)
     return $htmlTag;
 }
 
+
