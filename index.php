@@ -2,8 +2,8 @@
 /**
  * 一款简洁的TYPECHO主题
  *
- * @package JAYDENFORU
- * @author Jayden
+ * @package Creamy
+ * @author 会飞的龙
  * @version 1.0.5
  * @link https://iobiji.com
  */
