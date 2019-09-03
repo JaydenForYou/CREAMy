@@ -562,6 +562,7 @@ function ajaxComment($archive){
   Typecho_Cookie::delete('__typecho_remember_text');
   $db->fetchRow($feedback->select()->where('coid = ?', $commentId)
       ->limit(1), array($feedback, 'push'));
+  $feedback->pluginHandle()->finishComment($feedback);
   // 返回评论数据
   $data = array(
       'cid' => $feedback->cid,
@@ -585,8 +586,6 @@ function ajaxComment($archive){
 
   $data['avatar'] = Typecho_Common::gravatarUrl($data['mail'], 48, Helper::options()->commentsAvatarRating, NULL, $archive->request->isSecure());
   $archive->response->throwJson(array('status'=>1,'comment'=>$data));
-  $db->fetchRow($feedback->select()->where('coid = ?', $commentId)->limit(1), array($feedback, 'push'));
-  $feedback->pluginHandle()->finishComment($feedback);
 }
 
 function parseUA($ua)
