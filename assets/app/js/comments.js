@@ -46,8 +46,8 @@ $(function(){
       $(html).appendTo(el);
     }
     // ajax提交评论
-    let parenid = $("form").attr("parentid");
-    if(parenid.length==0){
+    let parentid = $("form").attr("parentid");
+    if(parentid.length==0){
       var req = "";
     }else{
       var req = "comment?parent="+parentid;
