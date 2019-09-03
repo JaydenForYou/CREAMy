@@ -1,4 +1,4 @@
-# JaydenForU
+# Creamy
 一款简洁的TYPECHO主题
 ## 写在前面
 主题前端来自[GITHUB-Frenemy](https://github.com/JaxsonWang/Frenemy "GITHUB-Frenemy")
