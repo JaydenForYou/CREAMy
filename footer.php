@@ -61,6 +61,15 @@ $pjaxS = $qurl.'/assets/app/js/pjaxS.js';
 <script type="text/javascript" src="<?=$jquery?>"></script>
 <script src='<?=$casper?>'></script>
 <?php if(Utils::isEnabled('enablePJAX','JConfig')): ?>
+<?php if(Utils::isEnabled('enableLazyload','JConfig')): ?>
+<script>
+var isLZ = true;
+</script>
+<?php else: ?>
+<script>
+var isLZ = false;
+</script>
+<?php endif ?>
 <script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.js"></script>
 <script src='//unpkg.com/nprogress@0.2.0/nprogress.js'></script>
 <script src='<?=$pjax?>'></script>

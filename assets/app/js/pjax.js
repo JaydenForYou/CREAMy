@@ -15,12 +15,19 @@ $(document).pjax('a[href^='+ url +']:not(a[target="_blank"], a[no-pjax])', {
   timeout: 8000
 })
 $(document).on('pjax:start',function() { NProgress.start(); });
-$(document).on('pjax:end',function() { NProgress.done(); });
-if(typeof lazyload === "function") {
+$(document).on('pjax:end',function() {
+  NProgress.done();
+});
+if(isLZ==true) {
   $(document).on('pjax:complete', function () {
-    $("img.lazyload").lazyload();
-    $("div.lazyload").lazyload();
+    jQuery(function () {
+      jQuery("div").lazyload({effect: "fadeIn"});
+    });
+    jQuery(function () {
+      jQuery("img").lazyload({effect: "fadeIn"});
+    });
   });
+  console.log('lazyload is opened');
 }else{
   console.log('lazyload is closed');
 }
