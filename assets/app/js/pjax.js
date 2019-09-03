@@ -10,7 +10,7 @@ function getBaseUrl() {
 }
 
 function Active(){
-    let url = '<?php echo $this->options->siteUrl; ?>';
+    let url = getBaseUrl()+'/';
     if(url!=window.location.href) {
       $(this).attr("class", "nav-link active");
       console.log(window.location.href);
