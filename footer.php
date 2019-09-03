@@ -75,6 +75,9 @@ var isLZ = false;
 <script src='<?=$pjax?>'></script>
 <?php endif ?>
 <script src='<?=$comments?>'></script>
+<script>
+
+</script>
 <script type="text/javascript" src="<?=$bootstrapjs?>"></script>
 <script type="text/javascript" src="<?=$pivot?>"></script>
 <script type="text/javascript" src="<?=$appminjs?>"></script>

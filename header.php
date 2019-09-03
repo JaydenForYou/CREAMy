@@ -52,22 +52,22 @@ $appmin = $qurl.'/assets/app/css/app.min.css?ver=1153';
     <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button id="bswtich" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
+          <ul id="llist" class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link <?php if($this->is('index')){echo 'active';}?>" href="<?php $this->options->siteUrl(); ?>">首页</a>
+              <a id="home" class="nav-link <?php if($this->is('index')){echo 'active';}?>" href="<?php $this->options->siteUrl(); ?>" onclick="javascript:Active">首页</a>
             </li>
             <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
             <?php while ($category->next()): ?>
-              <li class="nav-item"><a <?php if ($this->is('category', $category->slug)): ?>class="nav-link active"<?php else: ?>class="nav-link"<?php endif; ?> href="<?php $category->permalink(); ?>"><?php $category->name(); ?></a></li>
+              <li class="nav-item"><a class="nav-link" href="<?php $category->permalink(); ?>" onclick="javascript:Active"><?php $category->name(); ?></a></li>
             <?php endwhile; ?>
             <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
             <?php while($pages->next()): ?>
-            <li class="nav-item"><a <?php if($this->is('page', $pages->slug)): ?>class="nav-link active"<?php else: ?>class="nav-link"<?php endif; ?> href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
-              <?php endwhile; ?>
+            <li class="nav-item"><a class="nav-link" href="<?php $pages->permalink(); ?>" onclick="javascript:Active"><?php $pages->title(); ?></a>
+            <?php endwhile; ?>
             <li class="nav-item m-0 d-none d-md-block d-lg-block d-xl-block">
               <div class="site-searchbar">
                 <label for="nav-top-search"></label>
