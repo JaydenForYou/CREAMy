@@ -1,0 +1,15 @@
+/**
+  @Author 淮城一只猫
+  @Date 2019-08-09
+  @Name 黑暗模式
+ */
+
+$bg-dark-1: #080808 !default;
+$bg-dark-2: #252525 !default;
+
+$dark-font: #b7b7b7 !default;
+
+[data-theme="dark"] {
+  background-color: $bg-dark-1;
+  color: $dark-font;
+}

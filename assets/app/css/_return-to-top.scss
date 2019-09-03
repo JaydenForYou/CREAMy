@@ -1,0 +1,25 @@
+/**
+  @Author 淮城一只猫
+  @Date 2019-08-09
+  @Name 回到顶部按钮样式
+ */
+
+#return-to-top {
+  position: fixed;
+  bottom: 50px;
+  right: 80px;
+  //display: none;
+  z-index: 1;
+  transition: ease-in 250ms ease 0ms;
+  background-color: #000;
+  border-radius: 50%;
+  width: 4em;
+  height: 4em;
+  text-align: center;
+  padding: 1em;
+  cursor: pointer;
+  i.fas {
+    font-size: 2em;
+    color: #fff;
+  }
+}

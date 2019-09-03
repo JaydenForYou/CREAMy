@@ -1,0 +1,80 @@
+/**
+  @Author 淮城一只猫
+  @Date 2019-08-09
+  @Name 分页
+ */
+
+.site-warp {
+  .site-main {
+    .site-pagination {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      .pagination {
+        .page-item {
+          &.active {
+            span {
+              background-color: #e9ecef;
+              border: none;
+              color: #000;
+              font-size: 1.2rem;
+            }
+          }
+          a {
+            border: none;
+            color: #000;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// 小于 576px
+@media (max-width: 575.98px) {
+
+}
+
+// 小于 768px
+@media (max-width: 767.98px) {
+
+}
+
+// 小于 992px
+@media (max-width: 991.98px) {
+
+}
+
+// 小于 1200px
+@media (max-width: 1199.98px) {
+
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+[data-theme="dark"] {
+  .site-warp {
+    .site-main {
+      .site-pagination {
+        .pagination {
+          .page-item {
+            &.active {
+              span {
+                background-color: $bg-dark-2;
+                color: $dark-font;
+              }
+            }
+            a {
+              color: $dark-font;
+              background-color: $bg-dark-1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
