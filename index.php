@@ -2,7 +2,7 @@
 /**
  * 一款简洁的TYPECHO主题
  *
- * @package Creamy
+ * @package CREAMY
  * @author 会飞的龙
  * @version 1.0.5
  * @link https://iobiji.com
