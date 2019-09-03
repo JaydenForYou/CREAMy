@@ -1,6 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-define('JAYDENFORU_VERSION', '1.0.5');
+define('Creamy_VERSION', '1.0.5');
 define('__TYPECHO_GRAVATAR_PREFIX__', Helper::options()->Gravatar ? Helper::options()->Gravatar : '//cdn.v2ex.com/gravatar/');
 require_once 'lib/Utils.php';
 require_once 'lib/Comments.php';
@@ -9,7 +9,7 @@ if (!empty(Helper::options()->cdn)) {
 }
 function themeConfig($form)
 {
-  echo '<script>var JaydenForU_VERSION = "' . JaydenForU_VERSION . '";</script>';
+  echo '<script>var Creamy_VERSION = "' . Creamy_VERSION . '";</script>';
   ?>
   <style>form {
       position: relative;
@@ -343,8 +343,8 @@ function themeConfig($form)
   </style>
   <?php
   echo '<div class="tip"><span class="current-ver"><strong><code>Ver ' . JAYDENFORU_VERSION . '</code></strong></span>
-    <div class="tip-header"><h1>Theme-JAYDENFORU</h1></div>
-    <p>感谢选择使用 <code>JaydenForYou</code> </p>
+    <div class="tip-header"><h1>Theme-CREAMY</h1></div>
+    <p>感谢选择使用 <code>CREAMY</code> </p>
     <p>查看<a href="//iobiji.com/zi-ji-xie-de-di-yi-kuan-typechozhu-ti-jaydenforu/">帮助手册</a> <a href="https://github.com/JaydenForYou/JaydenForU/issues">issue</a></p>
 </div>';
   $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
