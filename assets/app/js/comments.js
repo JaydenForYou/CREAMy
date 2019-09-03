@@ -2,7 +2,7 @@ function onClick(id,author) {
   $("textarea").focus();
   let ids = id.replace(/comment-/g,"");
   let action = $("form").attr("action");
-  $("form").attr("parenid",ids);
+  $("form").attr("parentid",ids);
   $("#comment-form").attr(action,"comment?parent="+ids);
   $(function(){
     var inp = $('#textarea');
@@ -48,7 +48,7 @@ $(function(){
       $(html).appendTo(el);
     }
     // ajax提交评论
-    let parenid = $("form").attr("parenid");
+    let parenid = $("form").attr("parentid");
     if(parenid.length==0){
       var req = "";
     }else{
