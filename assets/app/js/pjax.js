@@ -14,6 +14,11 @@ $(document).pjax('a[href^='+ url +']:not(a[target="_blank"], a[no-pjax])', {
   fragment: '#pjax',
   timeout: 8000
 })
-$(document).on('pjax:start', function() { NProgress.start(); });
-$(document).on('pjax:end',   function() { NProgress.done(); });
-$(document).on('pjax:complete',   function() { $("img.lazyload").lazyload();$("div.lazyload").lazyload(); });
+$(document).on('pjax:start',function() { NProgress.start(); });
+$(document).on('pjax:end',function() { NProgress.done(); });
+if(isPJAX) {
+  $(document).on('pjax:complete', function () {
+    $("img.lazyload").lazyload();
+    $("div.lazyload").lazyload();
+  });
+}

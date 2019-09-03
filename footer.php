@@ -13,6 +13,7 @@ $lazyload = $qurl.'/assets/app/js/lazyload.js';
 $casper = $qurl.'/assets/app/js/casper.js';
 $comments = $qurl.'/assets/app/js/comments.js';
 $pjax = $qurl.'/assets/app/js/pjax.js';
+$pjaxS = $qurl.'/assets/app/js/pjaxS.js';
 ?>
 </div><!-- end #pjax-container -->
 <footer class="site-footer">
@@ -60,9 +61,16 @@ $pjax = $qurl.'/assets/app/js/pjax.js';
 <script type="text/javascript" src="<?=$jquery?>"></script>
 <script src='<?=$casper?>'></script>
 <?php if(Utils::isEnabled('enablePJAX','JConfig')): ?>
+<script>
+  var isPJAX = true;
+</script>
 <script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.js"></script>
 <script src='//unpkg.com/nprogress@0.2.0/nprogress.js'></script>
 <script src='<?=$pjax?>'></script>
+<?php else: ?>
+<script>
+var isPJAX = false;
+</script>
 <?php endif ?>
 <script src='<?=$comments?>'></script>
 <script type="text/javascript" src="<?=$bootstrapjs?>"></script>
