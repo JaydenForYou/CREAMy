@@ -38,7 +38,6 @@ $(document).pjax('a[href^='+ url +']:not(a[target="_blank"], a[no-pjax])', {
 $(document).on('pjax:start',function() {
   NProgress.start();
   navSwitch();
-  Active()
 });
 $(document).on('pjax:end',function() {
   NProgress.done();
