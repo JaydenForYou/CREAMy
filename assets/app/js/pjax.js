@@ -16,9 +16,11 @@ $(document).pjax('a[href^='+ url +']:not(a[target="_blank"], a[no-pjax])', {
 })
 $(document).on('pjax:start',function() { NProgress.start(); });
 $(document).on('pjax:end',function() { NProgress.done(); });
-if(isPJAX) {
+if(typeof lazyload === "function") {
   $(document).on('pjax:complete', function () {
     $("img.lazyload").lazyload();
     $("div.lazyload").lazyload();
   });
+}else{
+  console.log('lazyload is closed');
 }
