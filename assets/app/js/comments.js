@@ -1,9 +1,7 @@
 function onClick(id,author) {
   $("textarea").focus();
-  let ids = id.replace(/comment-/g,"")
-  let action = $("form").attr("action");
-  $("form").attr("parenid",ids);
-  $("#comment-form").attr(action,"comment?parent="+ids);
+  let ids = id.replace(/comment-/g,"");
+  $("form").attr("parentid",ids);
   $(function(){
     var inp = $('#textarea');
     inp.focus(function(){
@@ -48,11 +46,11 @@ $(function(){
       $(html).appendTo(el);
     }
     // ajax提交评论
-    let parenid = $("form").attr("parenid");
+    let parenid = $("form").attr("parentid");
     if(parenid.length==0){
       var req = "";
     }else{
-      var req = "comment?parent="+parenid;
+      var req = "comment?parent="+parentid;
     }
     $.ajax({
       url: $("form").attr("action")+req,

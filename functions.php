@@ -552,6 +552,9 @@ function ajaxComment($archive){
   }
 
   /** 添加评论 */
+  if (preg_match("/[\x{4e00}-\x{9fa5}]/u", $comment['text']) == 0) {
+    $archive->response->throwJson(array('status'=>0,'msg'=>_t('评论内容请不少于一个中文汉字')));
+  }
   $commentId = $feedback->insert($comment);
   if(!$commentId){
     $archive->response->throwJson(array('status'=>0,'msg'=>_t('评论失败')));
@@ -559,6 +562,7 @@ function ajaxComment($archive){
   Typecho_Cookie::delete('__typecho_remember_text');
   $db->fetchRow($feedback->select()->where('coid = ?', $commentId)
       ->limit(1), array($feedback, 'push'));
+  $feedback->pluginHandle()->finishComment($feedback);
   // 返回评论数据
   $data = array(
       'cid' => $feedback->cid,

@@ -9,7 +9,6 @@ $jquery = $qurl.'/assets/jquery/jquery.js';
 $bootstrapjs = $qurl.'/assets/bootstrap/bootstrap.js';
 $pivot = $qurl.'/assets/pivot/pivot.js';
 $appminjs = $qurl.'/assets/app/js/app.min.js?ver=1153';
-$demo = $qurl.'/demo.js';
 $lazyload = $qurl.'/assets/app/js/lazyload.js';
 $casper = $qurl.'/assets/app/js/casper.js';
 $comments = $qurl.'/assets/app/js/comments.js';
@@ -69,7 +68,6 @@ $pjax = $qurl.'/assets/app/js/pjax.js';
 <script type="text/javascript" src="<?=$bootstrapjs?>"></script>
 <script type="text/javascript" src="<?=$pivot?>"></script>
 <script type="text/javascript" src="<?=$appminjs?>"></script>
-<script type="text/javascript" src="<?=$demo?>"></script>
 <?php if(Utils::isEnabled('enableLazyload','JConfig')&&$this->is('index')): ?>
   <script src="<?=$lazyload?>"></script>
   <script type="text/javascript">
