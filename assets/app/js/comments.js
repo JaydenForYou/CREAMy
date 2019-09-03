@@ -52,7 +52,7 @@ $(function(){
     if(parenid.length==0){
       var req = "";
     }else{
-      var req = "comment?parent="+parenid;
+      var req = "comment?parent="+parentid;
     }
     $.ajax({
       url: $("form").attr("action")+req,
