@@ -25,7 +25,7 @@ class Utils
     $enablePJAX = self::isEnabled('enablePJAX', 'JConfig');
 
     $THEME_CONFIG = json_encode((object)array(
-        "THEME_VERSION" => JaydenForU_VERSION,
+        "THEME_VERSION" => Creamy_VERSION,
         "SITE_URL" => rtrim($options->siteUrl, "/"),
         "THEME_URL" => $options->themeUrl,
         "ENABLE_LAZYLOAD" => $enableLazyload,
