@@ -119,7 +119,19 @@ class Utils
     if (defined('__TYPECHO_GRAVATAR_PREFIX__')) {
       $url = __TYPECHO_GRAVATAR_PREFIX__;
     } else {
-      $url = $isSecure ? 'https://secure.gravatar.com' : 'http://www.gravatar.com';
+      if ( !empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off') {
+        $http_type='https';
+      } elseif ( isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) {
+        $http_type='https';
+      } elseif ( !empty($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) !== 'off') {
+        $http_type='https';
+      }
+      $http_type='http';
+      if($http_type=='https'){
+        $url = 'https://secure.gravatar.com';
+      }else{
+        $url = 'http://www.gravatar.com';
+      }
       $url .= '/avatar/';
     }
 
@@ -129,7 +141,6 @@ class Utils
 
     $url .= '?s=60';
     $url .= '&amp;r=G';
-    $url .= '&amp;d=default';
     return $url;
   }
 

@@ -38,7 +38,7 @@ $(function(){
         el = $('#comments > .comment-list');
       }
       // 评论html模板，根据具体主题定制
-      var html = '<li id="comment-{coid}" class="comment-body comment-ajax"><div class="vcard" id="{coid}"><img class="vimg" src="{avatar}"><div class="vh" id="{coid}"><div class="vhead"><a class="vnick" rel="nofollow" href="{url}" target="_blank">{author}</a>{agent}</div> <div class="vmeta"><span class="vtime">{datetime}</span><span class="vat"><button class="vsubmit vbtn" onclick="onClick({coid},{author})">回复</button></span></div><div class="vcontent"><p>{content}</p></div></div></div></li>';
+      var html = '<li id="comment-{coid}" class="comment-body comment-ajax"><div class="vcard" id="{coid}"><img class="vimg" src="{avatar}"><div class="vh" id="{coid}"><div class="vhead"><a class="vnick" rel="nofollow" href="{url}" target="_blank">{author}</a>{agent}</div> <div class="vmeta"><span class="vtime">{datetime}</span><span class="vat"><button class="vsubmit vbtn" onclick="onClick(\'{coid}\',\'{author}\')">回复</button></span></div><div class="vcontent"><p>{content}</p></div></div></div></li>';
       $.each(comment,function(k,v){
         regExp = new RegExp('{'+k+'}', 'g');
         html = html.replace(regExp, v);
