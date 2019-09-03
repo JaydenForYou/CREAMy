@@ -342,7 +342,7 @@ function themeConfig($form)
     }
   </style>
   <?php
-  echo '<div class="tip"><span class="current-ver"><strong><code>Ver ' . JAYDENFORU_VERSION . '</code></strong></span>
+  echo '<div class="tip"><span class="current-ver"><strong><code>Ver ' . Creamy_VERSION . '</code></strong></span>
     <div class="tip-header"><h1>Theme-CREAMY</h1></div>
     <p>感谢选择使用 <code>CREAMY</code> </p>
     <p>查看<a href="//iobiji.com/zi-ji-xie-de-di-yi-kuan-typechozhu-ti-jaydenforu/">帮助手册</a> <a href="https://github.com/JaydenForYou/CREAMy/issues">issue</a></p>
