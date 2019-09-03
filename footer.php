@@ -18,7 +18,7 @@ $pjax = $qurl.'/assets/app/js/pjax.js';
 <footer class="site-footer">
   <div class="container d-flex justify-content-sm-between justify-content-center text-center">
     <div class="copyright">
-      <p><?php if(!null==$this->options->beian):?><a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener"><?php echo $this->options->beian ?></a> | <?php endif ?>Powered by <a href="https://ghost.org/" rel="noopener nofollow" target="_blank">TYPECHO</a>. Copyright &copy; 2019. Crafted with <a href="https://github.com/JaydenForYou/JaydenForU/" target="_blank" rel="noopener nofollow">JAYDENFORU</a>.</p>
+      <p><?php if(!null==$this->options->beian):?><a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener"><?php echo $this->options->beian ?></a> | <?php endif ?>Powered by TYPECHO. Copyright &copy; 2019. Crafted with <a href="https://github.com/JaydenForYou/JaydenForU/" target="_blank" rel="noopener nofollow">JAYDENFORU</a>.</p>
     </div>
     <nav class="social-links d-none d-sm-block">
       <ul>
