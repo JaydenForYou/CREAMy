@@ -1,6 +1,6 @@
 function onClick(id,author) {
   $("textarea").focus();
-  let ids = id.replace(/comment-/g,"")
+  let ids = id.replace(/comment-/g,"");
   let action = $("form").attr("action");
   $("form").attr("parenid",ids);
   $("#comment-form").attr(action,"comment?parent="+ids);
