@@ -12,7 +12,7 @@ $casper = $qurl.'/assets/app/js/casper.js';
 $comments = $qurl.'/assets/app/js/comments.js';
 $pjax = $qurl.'/assets/app/js/pjax.js';
 ?>
-</div><!-- end #pjax-container -->
+
 <footer class="site-footer">
   <div class="container d-flex justify-content-sm-between justify-content-center text-center">
     <div class="copyright">
@@ -26,6 +26,7 @@ $pjax = $qurl.'/assets/app/js/pjax.js';
     </nav>
   </div>
 </footer>
+</div><!-- end #pjax-container -->
 <style>
   .app-toasts {
     position: fixed;
@@ -75,7 +76,7 @@ $pjax = $qurl.'/assets/app/js/pjax.js';
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="<?=$pivot?>"></script>
 <script type="text/javascript" src="<?=$appminjs?>"></script>
-<?php if(Utils::isEnabled('enableLazyload','JConfig')&&$this->is('index')): ?>
+<?php if(Utils::isEnabled('enableLazyload','JConfig')&&$this->is('index')||$this->is('search')): ?>
   <script src="<?=$lazyload?>"></script>
   <script type="text/javascript">
     $("div.lazyload").lazyload();
