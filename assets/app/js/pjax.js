@@ -29,40 +29,23 @@ function navSwitch(){
   $("#navbarSupportedContent").attr("class","navbar-collapse collapse");
 }
 
-function loadscript(url, callback) {
-
-  var script = document.createElement("script")
-
-  script.type = "text/javascript";
-
-  if (script.readyState) {
-
-    script.onreadystatechange = function () {
-
-      if (script.readyState == "loaded" || script.readyState == "complete") {
-
-        script.onreadystatechange = null;
-
-        callback();
-
-      }
-
-    };
-
+function loadScript(fileName, callback, into) {
+  into = into || 'body';
+  callback = callback || function () {
+  };
+  var script = null;
+  script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = fileName;
+  script.onload = function () {
+    loadFiles.js.push(fileName);
+    callback();
+  };
+  if (into === 'head') {
+    document.getElementsByTagName('head')[0].appendChild(script);
   } else {
-
-    script.onload = function () {
-
-      callback();
-
-    };
-
+    document.body.appendChild(script);
   }
-
-  script.src = url;
-
-  document.getElementsByTagName("head")[0].appendChild(script);
-
 }
 
 let url = '"'+getBaseUrl()+'"';
@@ -77,7 +60,7 @@ $(document).on('pjax:start',function() {
 });
 $(document).on('pjax:end',function() {
   NProgress.done();
-  loadscript('/usr/themes/CREAMy/assets/app/js/app.min.js?ver=1153', function () {
+  loadScript('/usr/themes/CREAMy/assets/app/js/app.min.js?ver=1153', function () {
   });
 });
 if(isLZ==true) {
@@ -89,7 +72,6 @@ if(isLZ==true) {
       jQuery("img").lazyload({effect: "fadeIn"});
     });
   });
-  console.log('lazyload is opened');
 }else{
   console.log('lazyload is closed');
 }
