@@ -10,7 +10,7 @@ if (!null==$this->fields->thumbnail) {
 <?php if (!Utils::isEnabled('enableComments', 'JConfig')): ?>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <?php endif ?>
-  <section class="site-hero <?=$class?>" <?php if($class!='responsive-title-no-img'): ?>style="background-image: url('<?php echo $this->fields->thumbnail ?>')"<?php endif ?> > <!-- 没有图片 添加 .responsive-title-no-img -->
+  <section class="site-hero <?=$class?>" <?php if($class!='responsive-title-no-img'): ?>style="background-image: url('<?php echo $this->fields->thumbnail ?>')"<?php else: ?><?php endif ?> > <!-- 没有图片 添加 .responsive-title-no-img -->
     <div class="container">
       <div class="hero-content">
         <h1 class="post-full-title"><?php $this->title() ?></h1>
@@ -55,7 +55,8 @@ if (!null==$this->fields->thumbnail) {
           <?php if (Utils::isEnabled('enableComments', 'JConfig')): ?>
             <?php $this->need('comments.php'); ?>
           <?php else: ?>
-            <div id="vcomments" class="v"></div>
+            <div id="vcomments" class="v">
+            </div>
           <?php endif ?>
         </div>
       <?php else: ?>

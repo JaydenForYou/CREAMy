@@ -58,67 +58,8 @@
       document.body.appendChild(css);
     }
   }
-  function getBaseUrl() {
-    var ishttps = 'https:' == document.location.protocol ? true : false;
-    var url = window.location.host;
-    if (ishttps) {
-      url = 'https://' + url;
-    } else {
-      url = 'http://' + url;
-    }
-    return url;
-  }
-
-  function Active(){
-    let url = getBaseUrl()+'/';
-    if(url!=window.location.href) {
-      $(this).attr("class", "nav-link active");
-      console.log(window.location.href);
-    }else{
-      $('#home').attr("class", "nav-link");
-      $(this).attr("class", "nav-link");
-      console.log(window.location.href);
-    }
-  }
-
-  function navSwitch(){
-    $("html").attr("class","");
-    $("nav").attr("class","navbar navbar-expand-md navbar-dark top-nav");
-    $("#bswtich").attr("class","navbar-toggler collapsed");
-    $("#bswtich").attr("aria-expanded","false");
-    $("#navbarSupportedContent").attr("class","navbar-collapse collapse");
-  }
 
   $(document).ready(function () {
-	if(PJAXON){
-    let url = '"'+getBaseUrl()+'"';
-    $(document).pjax('a[href^='+ url +']:not(a[target="_blank"], a[no-pjax])', {
-      container: '#pjax',
-      fragment: '#pjax',
-      timeout: 8000
-    })
-    $(document).on('pjax:start',function() {
-      NProgress.start();
-      navSwitch();
-    });
-    $(document).on('pjax:end',function() {
-      NProgress.done();
-      loadScript('/usr/themes/CREAMy/assets/app/js/app.min.js?ver=1153', function () {
-      });
-    });
-    if(isLZ==true) {
-      $(document).on('pjax:complete', function () {
-        jQuery(function () {
-          jQuery("div").lazyload({effect: "fadeIn"});
-        });
-        jQuery(function () {
-          jQuery("img").lazyload({effect: "fadeIn"});
-        });
-      });
-    }else{
-      console.log('lazyload is closed');
-    }
-	}
     //百度推送
     var bp = document.createElement('script');
     var curProtocol = window.location.protocol.split(':')[0];
@@ -139,23 +80,23 @@
     //valine评论支持
     loadScript('//cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js', function () {
       loadScript(
-          '//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js',
-          function () {
-            if (document.getElementById('vcomments') !== null) {
-              new Valine({
-                el: '#vcomments',
-                appId: APPID,
-                appKey: APPKEY,
-                notify: true,
-                verify: true,
-                avatar: 'mm',
-                visitor: true, // 文章访问量统计
-                highlight: true, // 代码高亮
-                recordIP: true, // 是否记录评论者IP
-                placeholder: '请您理智发言，共建美好社会！'
-              });
-            }
+        'https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js',
+        function () {
+          if (document.getElementById('vcomments') !== null) {
+            new Valine({
+              el: '#vcomments',
+              appId: APPID,
+              appKey: APPKEY,
+              notify: true,
+              verify: true,
+              avatar: 'mm',
+              visitor: true, // 文章访问量统计
+              highlight: true, // 代码高亮
+              recordIP: true, // 是否记录评论者IP
+              placeholder: '请您理智发言，共建美好社会！'
+            });
           }
+        }
       );
     });
 
@@ -175,5 +116,4 @@
 
 window.onload = function () {
   console.log('已经动态加载资源：', loadFiles);
-  console.log('PJAX');
 };

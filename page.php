@@ -53,7 +53,8 @@ if (!null==$this->fields->thumbnail) {
         <?php if (Utils::isEnabled('enableComments', 'JConfig')): ?>
           <?php $this->need('comments.php'); ?>
         <?php else: ?>
-          <div id="vcomments" class="v"></div>
+          <div id="vcomments" class="v">
+          </div>
         <?php endif ?>
       </div>
     <?php else: ?>

@@ -10,6 +10,7 @@ $appminjs = $qurl.'/assets/app/js/app.min.js?ver=1153';
 $lazyload = $qurl.'/assets/app/js/lazyload.js';
 $casper = $qurl.'/assets/app/js/casper.js';
 $comments = $qurl.'/assets/app/js/comments.js';
+$pjax = $qurl.'/assets/app/js/pjax.js';
 ?>
 
 <footer class="site-footer">
@@ -69,9 +70,7 @@ $comments = $qurl.'/assets/app/js/comments.js';
   <?php endif ?>
   <script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.js"></script>
   <script src='//unpkg.com/nprogress@0.2.0/nprogress.js'></script>
-  <script>var PJAXON = true;</script>
-  <?php else: ?>
-  <script>var PJAXON = false;</script>
+  <script src='<?=$pjax?>'></script>
 <?php endif ?>
 <script src='<?=$comments?>'></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
