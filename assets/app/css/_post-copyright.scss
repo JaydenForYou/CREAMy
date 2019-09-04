@@ -1,0 +1,32 @@
+/**
+  @Author 淮城一只猫
+  @Date 2019-08-09
+  @Name 主题文章版权样式
+ */
+
+.post-copyright {
+  margin: 2rem 0 0;
+  padding: 0.5rem 1rem;
+  border-left: 0.3rem solid #000;
+  background-color: #f9f9f9;
+  list-style: none;
+  width: 100%;
+  li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    padding: 0.2rem 0;
+  }
+}
+
+[data-theme="dark"] {
+  .post-copyright {
+    border-left: 0.3rem solid $bg-dark-1;
+    background-color: #2d2d2d;
+    li {
+      a {
+        color: $dark-font;
+        border-bottom: 1px solid $dark-font;
+      }
+    }
+  }
+}

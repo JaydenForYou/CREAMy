@@ -1,0 +1,367 @@
+/**
+  @Author 淮城一只猫
+  @Date 2019-08-09
+  @Name 模板头部
+ */
+
+.site-warp {
+  .site-header {
+
+    nav.navbar {
+      background-color: #fff;
+      padding: 0.75rem 0;
+      box-shadow: 0 0.125rem 0.625rem 0 rgba(0, 0, 0, .15);
+      transition: all 250ms ease 0ms;
+
+      &.top-nav {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        background-color: transparent;
+        box-shadow: none;
+
+        nav.navbar {
+          .navbar-brand {
+          }
+
+          .navbar-toggler {
+          }
+
+          .navbar-collapse {
+            .navbar-nav {
+              .nav-item {
+                &.active {
+                  .nav-link {
+                  }
+                }
+
+                .nav-link {
+                }
+              }
+            }
+          }
+        }
+
+        .site-searchbar {
+          border: 1px solid transparent;
+
+          &:hover {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+          }
+
+          &:hover > .search-icon {
+            color: #fff;
+          }
+
+          &:hover > .search-input {
+            color: #fff;
+          }
+
+          .search-input {
+            color: rgba(255, 255, 255, 0.5);
+
+            &::placeholder {
+              color: rgba(255, 255, 255, 0.5);
+            }
+          }
+
+          .search-icon {
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
+
+        .dark-switch-label {
+          a {
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+
+      .navbar-brand {
+        font-size: 1.375rem;
+      }
+
+      .navbar-toggler {
+        outline: none;
+      }
+
+      .navbar-collapse {
+        .navbar-nav {
+          .nav-item {
+            padding: 0 0.625rem;
+            margin: auto;
+
+            &.active {
+              .nav-link {
+              }
+            }
+
+            .nav-link {
+            }
+
+            .mobile-search {
+              .mobile-search-input {
+                border-radius: 0;
+                border-top-color: transparent;
+                border-right-color: transparent;
+                border-left-color: transparent;
+                outline: none;
+
+                &:focus {
+                  border-color: transparent;
+                  box-shadow: none;
+                  border-bottom-color: initial;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .site-searchbar {
+        border-radius: 1.875rem;
+        border: 1px solid transparent;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 .625rem;
+
+
+        &:hover {
+          border: 1px solid rgba(0, 0, 0, 0.5);
+        }
+
+        &:hover > .search-input {
+          padding: 0 0.9375rem;
+          width: 12.625rem;
+          transition: width 400ms linear;
+          color: #000;
+        }
+
+        &:hover > .search-icon {
+          padding-right: 0.625rem;
+        }
+
+        .search-input {
+          color: rgba(0, 0, 0, 0.5);
+          border: 0;
+          outline: 0;
+          background: none;
+          width: 0;
+          line-height: 1.5rem;
+          transition: width 400ms linear;
+        }
+
+        .search-icon {
+          height: 1.5rem;
+          color: rgba(0, 0, 0, .5);
+        }
+      }
+
+      .dark-switch-label {
+        margin-bottom: 0;
+        cursor: pointer;
+        a {
+          color: rgba(0,0,0,.5);
+        }
+        & + .custom-control-input {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// 小于 992px
+@media (max-width: 991.98px) {
+  .site-warp {
+    .site-header {
+      nav.navbar {
+        .dark-switch-label {
+          padding: 1rem 0;
+        }
+      }
+    }
+  }
+}
+
+// 小于 768px
+@media (max-width: 767.98px) {
+  .site-warp {
+    .site-header {
+      nav.navbar {
+        .navbar-collapse {
+          .navbar-nav {
+            .nav-item {
+              margin: 0;
+              &:last-child {
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+
+        .site-searchbar {
+          border-radius: 1.875rem;
+          border: 1px solid transparent;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 .625rem;
+
+
+          &:hover {
+            border: 1px solid rgba(0, 0, 0, 0.5);
+          }
+
+          &:hover > .search-input {
+            padding: 0 0.9375rem;
+            width: 12.625rem;
+            transition: width 400ms linear;
+            color: #000;
+          }
+
+          &:hover > .search-icon {
+            padding-right: 0.625rem;
+          }
+
+          .search-input {
+            color: rgba(0, 0, 0, 0.5);
+            border: 0;
+            outline: 0;
+            background: none;
+            width: 0;
+            line-height: 1.5rem;
+            transition: width 400ms linear;
+          }
+
+          .search-icon {
+            height: 1.5rem;
+            color: rgba(0, 0, 0, .5);
+          }
+        }
+
+        .dark-switch-label {
+          margin-bottom: 0;
+          cursor: pointer;
+          a {
+            color: rgba(0,0,0,.5);
+          }
+          & + .custom-control-input {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 小于 576px
+@media (max-width: 575.98px) {
+  .site-warp {
+    .site-header {
+      nav.navbar {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .site-warp {
+    .site-header {
+      nav.navbar {
+        background-color: $bg-dark-2;
+        box-shadow: 0 2px 24px 5px $bg-dark-1;
+        &.top-nav {
+          background-color: transparent;
+          box-shadow: none;
+
+          .site-searchbar {
+            &:hover {
+              border: 1px solid $dark-font;
+            }
+            &:hover > .search-icon {
+              color: $dark-font;
+            }
+            &:hover > .search-input {
+              color: $dark-font;
+            }
+            .search-input {
+              color: $dark-font;
+
+              &::placeholder {
+                color: $dark-font;
+              }
+            }
+            .search-icon {
+              color: $dark-font;
+            }
+          }
+        }
+
+        .navbar-brand {
+          color: $dark-font;
+        }
+
+        &.navbar-light {
+          .navbar-toggler {
+            .navbar-toggler-icon {
+              background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            }
+          }
+        }
+        .navbar-toggler {
+          border-color: $dark-font;
+        }
+
+        .navbar-collapse {
+          .navbar-nav {
+            .nav-item {
+              &.active {
+                .nav-link {
+                  color: rgba(255, 255, 255, 0.9);
+                }
+              }
+              .nav-link {
+                color: $dark-font;
+              }
+
+              .mobile-search {
+                .mobile-search-input {
+                  background-color: transparent;
+                  color: $dark-font
+                }
+              }
+            }
+          }
+        }
+        .site-searchbar {
+          &:hover {
+            border: 1px solid $dark-font;
+          }
+
+          &:hover > .search-input {
+            color: $dark-font;
+          }
+
+          .search-input {
+            color: $dark-font;
+          }
+
+          .search-icon {
+            color: $dark-font;
+          }
+        }
+
+        .dark-switch-label {
+          a {
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+    }
+  }
+}
