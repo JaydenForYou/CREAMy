@@ -77,7 +77,7 @@ $(document).on('pjax:start',function() {
 });
 $(document).on('pjax:end',function() {
   NProgress.done();
-  loadscript('/usr/themes/JaydenForU/assets/app/js/app.min.js?ver=1153', function () {
+  loadscript('/usr/themes/CREAMy/assets/app/js/app.min.js?ver=1153', function () {
   });
 });
 if(isLZ==true) {
