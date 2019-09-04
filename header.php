@@ -80,6 +80,7 @@ $appmin = $qurl.'/assets/app/css/app.min.css?ver=1153';
                 </div>
                 </form>
             </li>
+            <?php if(!Utils::isEnabled('enablePJAX','JConfig')): ?>
             <li class="nav-item">
               <label class="dark-switch-label" for="darkSwitch">
                 <a class="dark-switch-label-span" data-toggle="tooltip" data-placement="bottom" title="日夜模式">
@@ -88,6 +89,7 @@ $appmin = $qurl.'/assets/app/css/app.min.css?ver=1153';
               </label>
               <input type="checkbox" class="custom-control-input" id="darkSwitch">
             </li>
+            <?php endif ?>
           </ul>
         </div>
       </div>
