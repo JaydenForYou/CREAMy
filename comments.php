@@ -1,4 +1,33 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<style>
+  [data-theme=dark] .post-comments .v .vwrap {
+    border:1px solid #080808
+  }
+  [data-theme=dark] .post-comments .v .vwrap .vheader .vinput {
+    border-bottom:.0625rem dashed #b7b7b7
+  }
+  [data-theme=dark] .post-comments .v .vbtn {
+    border:1px solid #080808;
+    background:#252525;
+    color:#b7b7b7
+  }
+  [data-theme=dark] .post-comments .v .vlist .vcard .vhead .vsys {
+    background:#080808;
+    color:#b7b7b7
+  }
+  [data-theme=dark] .post-comments .v .vlist .vcard .vh {
+    border-bottom:.0625rem dashed #080808
+  }
+  [data-theme=dark] .post-comments .v .vlist .vquote {
+    border-left:#080808
+  }
+  [data-theme=dark] .post-comments .v .vcontrol .col {
+    color:#252525
+  }
+  [data-theme=dark] .post-comments .v * {
+    color:#b7b7b7
+  }
+</style>
 <?php
 function threadedComments($comments, $options)
 {

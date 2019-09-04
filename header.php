@@ -67,18 +67,18 @@ $appmin = $qurl.'/assets/app/css/app.min.css?ver=1153';
             <li class="nav-item"><a class="nav-link" href="<?php $pages->permalink(); ?>" onclick="javascript:Active"><?php $pages->title(); ?></a>
               <?php endwhile; ?>
             <li class="nav-item m-0 d-none d-md-block d-lg-block d-xl-block">
-              <div class="site-searchbar">
+                <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search" class="site-searchbar">
                 <label for="nav-top-search"></label>
-                <input id="nav-top-search" class="search-input" type="text" placeholder="Search...">
+                <input id="nav-top-search" name="s" class="search-input" type="text" placeholder="Search...">
                 <a class="search-icon"><i class="fas fa-search"></i></a>
-              </div>
+                </form>
             </li>
             <li class="nav-item d-block d-md-none d-lg-none d-xl-none">
-              <form class="mobile-search">
+                <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search" class="mobile-search">
                 <div class="input-group">
-                  <input type="text" class="mobile-search-input form-control" placeholder="Search..." aria-label="Search Input">
+                  <input id="mobile-search" name="s" type="text" class="mobile-search-input form-control" placeholder="Search..." aria-label="Search Input">
                 </div>
-              </form>
+                </form>
             </li>
             <li class="nav-item">
               <label class="dark-switch-label" for="darkSwitch">

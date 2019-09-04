@@ -72,9 +72,6 @@ $pjax = $qurl.'/assets/app/js/pjax.js';
   <script src='<?=$pjax?>'></script>
 <?php endif ?>
 <script src='<?=$comments?>'></script>
-<script>
-
-</script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="<?=$pivot?>"></script>
 <script type="text/javascript" src="<?=$appminjs?>"></script>
