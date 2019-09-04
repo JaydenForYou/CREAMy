@@ -77,11 +77,11 @@ $(document).on('pjax:start',function() {
 });
 $(document).on('pjax:end',function() {
   NProgress.done();
+  loadscript('/usr/themes/JaydenForU/assets/app/js/app.min.js?ver=1153', function () {
+  });
 });
 if(isLZ==true) {
   $(document).on('pjax:complete', function () {
-    loadscript('/usr/themes/JaydenForU/assets/app/js/app.min.js?ver=1153', function () {
-    });
     jQuery(function () {
       jQuery("div").lazyload({effect: "fadeIn"});
     });
