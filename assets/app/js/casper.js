@@ -80,7 +80,7 @@
     //valine评论支持
       loadScript('//cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js', function () {
         loadScript(
-            'https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js',
+            '//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js',
             function () {
               if (document.getElementById('vcomments') !== null) {
                 new Valine({
