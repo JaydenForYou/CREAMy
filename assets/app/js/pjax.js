@@ -1,3 +1,8 @@
+(function ($) {
+	var loadFiles = {
+    js: [],
+    css: []
+  };
 function getBaseUrl() {
   var ishttps = 'https:' == document.location.protocol ? true : false;
   var url = window.location.host;
@@ -71,11 +76,7 @@ function BaiduPUSH() {
   bdhmt.parentNode.insertBefore(hm, bdhmt);
 }
 
-$(function(){
-var loadFiles = {
-    js: [],
-    css: []
-  };
+$(document).ready(function () {
 let url = '"'+getBaseUrl()+'"';
 $(document).pjax('a[href^='+ url +']:not(a[target="_blank"], a[no-pjax])', {
   container: '#pjax',
@@ -123,10 +124,11 @@ if(isLZ==true) {
 }else{
   console.log('lazyload is closed');
 }
-});
+})
+})(jQuery);
 
 window.onload = function () {
-    console.log('PJAX加载资源完毕：', loadFiles);
-}
+  console.log('加载PJAX资源完毕：', loadFiles);
+};
 
 
