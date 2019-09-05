@@ -71,7 +71,7 @@ function BaiduPUSH() {
   bdhmt.parentNode.insertBefore(hm, bdhmt);
 }
 
-$(document).ready(function () {
+$(function(){
 let url = '"'+getBaseUrl()+'"';
 $(document).pjax('a[href^='+ url +']:not(a[target="_blank"], a[no-pjax])', {
   container: '#pjax',
