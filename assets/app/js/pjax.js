@@ -9,18 +9,6 @@ function getBaseUrl() {
   return url;
 }
 
-function Active(){
-    let url = getBaseUrl()+'/';
-    if(url!=window.location.href) {
-      $(this).attr("class", "nav-link active");
-      console.log(window.location.href);
-    }else{
-      $('#home').attr("class", "nav-link");
-      $(this).attr("class", "nav-link");
-      console.log(window.location.href);
-    }
-}
-
 function navSwitch(){
   $("html").attr("class","");
   $("nav").attr("class","navbar navbar-expand-md navbar-dark top-nav");
