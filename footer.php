@@ -70,7 +70,13 @@ $pjax = $qurl.'/assets/app/js/pjax.js';
   <?php endif ?>
   <script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.js"></script>
   <script src='//unpkg.com/nprogress@0.2.0/nprogress.js'></script>
-  <script src='<?=$pjax?>'></script>
+  <script>
+  var iSPJAX = true;
+  </script>
+  <?php else:?>
+  <script>
+  var iSPJAX = false;
+  </script>
 <?php endif ?>
 <script src='<?=$comments?>'></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
