@@ -10,7 +10,6 @@ $appminjs = $qurl.'/assets/app/js/app.min.js?ver=1153';
 $lazyload = $qurl.'/assets/app/js/lazyload.js';
 $casper = $qurl.'/assets/app/js/casper.js';
 $comments = $qurl.'/assets/app/js/comments.js';
-$pjax = $qurl.'/assets/app/js/pjax.js';
 ?>
 
 <footer class="site-footer">
