@@ -72,6 +72,10 @@ function BaiduPUSH() {
 }
 
 $(function(){
+var loadFiles = {
+    js: [],
+    css: []
+  };
 let url = '"'+getBaseUrl()+'"';
 $(document).pjax('a[href^='+ url +']:not(a[target="_blank"], a[no-pjax])', {
   container: '#pjax',
@@ -120,5 +124,9 @@ if(isLZ==true) {
   console.log('lazyload is closed');
 }
 });
+
+window.onload = function () {
+    console.log('PJAX加载资源完毕：', loadFiles);
+}
 
 
