@@ -5,7 +5,7 @@ if(!empty($this->options->qiniu)){
 }else{
   $qurl = $this->options->themeUrl;
 }
-$appmin = $qurl.'/assets/app/css/app.min.css?ver=1153';
+$appmin = $qurl.'/assets/app/css/app.min.css';
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -47,10 +47,10 @@ $appmin = $qurl.'/assets/app/css/app.min.css?ver=1153';
 <body class="home-template"><!-- 添加 .home-template 以便识别模板为首页 -->
 <div class="site-warp">
   <header class="site-header fixed-top">
-    <nav class="navbar navbar-expand-md navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
-        <button id="bswitch" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -67,28 +67,28 @@ $appmin = $qurl.'/assets/app/css/app.min.css?ver=1153';
             <li class="nav-item"><a class="nav-link" href="<?php $pages->permalink(); ?>" ><?php $pages->title(); ?></a>
               <?php endwhile; ?>
             <li class="nav-item m-0 d-none d-md-block d-lg-block d-xl-block">
-                <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search" class="site-searchbar">
+              <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search" class="site-searchbar">
                 <label for="nav-top-search"></label>
                 <input id="nav-top-search" name="s" class="search-input" type="text" placeholder="Search...">
                 <a class="search-icon"><i class="fas fa-search"></i></a>
-                </form>
+              </form>
             </li>
             <li class="nav-item d-block d-md-none d-lg-none d-xl-none">
-                <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search" class="mobile-search">
+              <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search" class="mobile-search">
                 <div class="input-group">
                   <input id="mobile-search" name="s" type="text" class="mobile-search-input form-control" placeholder="Search..." aria-label="Search Input">
                 </div>
-                </form>
+              </form>
             </li>
             <?php if(!Utils::isEnabled('enablePJAX','JConfig')): ?>
-            <li class="nav-item">
-              <label class="dark-switch-label" for="darkSwitch">
-                <a class="dark-switch-label-span" data-toggle="tooltip" data-placement="bottom" title="日夜模式">
-                  <i class="fas fa-sun"></i>
-                </a>
-              </label>
-              <input type="checkbox" class="custom-control-input" id="darkSwitch">
-            </li>
+              <li class="nav-item">
+                <label class="dark-switch-label" for="darkSwitch">
+                  <a class="dark-switch-label-span" data-toggle="tooltip" data-placement="bottom" title="日夜模式">
+                    <i class="fas fa-sun"></i>
+                  </a>
+                </label>
+                <input type="checkbox" class="custom-control-input" id="darkSwitch">
+              </li>
             <?php endif ?>
           </ul>
         </div>

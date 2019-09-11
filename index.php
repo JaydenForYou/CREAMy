@@ -4,7 +4,7 @@
  *
  * @package CREAMy
  * @author Jayden
- * @version 1.0.5
+ * @version 1.0.6
  * @link https://iobiji.com
  */
 
@@ -72,18 +72,20 @@ if ($this->_currentPage == ceil($this->getTotal() / $this->parameter->pageSize))
                 <h3 class="post-card-title"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h3>
               </header>
               <section class="post-card-excerpt">
-                <p><?php
+                <p>
+                  <?php
                   if($this->fields->previewContent)
                     $this->fields->previewContent();
                   else
                     $this->excerpt(55, '...');
-                  ?></p>
+                  ?>
+                </p>
               </section>
               <footer class="post-meta">
                 <ul class="author-list">
                   <li class="author-list-item">
-                    <a href="#" class="static-avatar">
-                      <?php echo $this->author->gravatar(32,'G',NULL,'author-profile-image') ?>
+                    <a href="<?php $this->author->permalink(); ?>" class="static-avatar">
+                      <?php echo $this->author->gravatar(320,'G',NULL,'author-profile-image') ?>
                       <span class="author-profile-name"><?php $this->author(); ?></span>
                     </a>
                   </li>

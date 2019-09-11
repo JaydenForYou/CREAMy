@@ -5,8 +5,7 @@ if(!empty($this->options->qiniu)){
 }else{
   $qurl = $this->options->themeUrl;
 }
-$pivot = $qurl.'/assets/pivot/pivot.js';
-$appminjs = $qurl.'/assets/app/js/app.min.js?ver=1153';
+$appminjs = $qurl.'/assets/app/js/app.min.js';
 $lazyload = $qurl.'/assets/app/js/lazyload.js';
 $casper = $qurl.'/assets/app/js/casper.js';
 $comments = $qurl.'/assets/app/js/comments.js';
@@ -79,7 +78,6 @@ $comments = $qurl.'/assets/app/js/comments.js';
 <?php endif ?>
 <script src='<?=$comments?>'></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="<?=$pivot?>"></script>
 <script type="text/javascript" src="<?=$appminjs?>"></script>
 <?php if(Utils::isEnabled('enableLazyload','JConfig')&&$this->is('index')||$this->is('search')): ?>
   <script src="<?=$lazyload?>"></script>

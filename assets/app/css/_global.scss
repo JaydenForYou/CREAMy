@@ -4,5 +4,16 @@
   @Name 全局样式
  */
 .medium-zoom-image--opened {
-  z-index: 1;
+  z-index: 3;
+}
+
+.medium-zoom-overlay {
+  background-color: #fff!important;
+  z-index: 2;
+}
+
+[data-theme="dark"] {
+  .medium-zoom-overlay {
+    background-color: #080808!important;
+  }
 }

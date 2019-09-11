@@ -1,0 +1,50 @@
+/**
+  @Author 淮城一只猫
+  @Date 2019-08-09
+  @Name 表格样式
+ */
+
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  th, td {
+    padding: 0.75rem 0;
+    vertical-align: middle;
+    border-top: 0.063rem solid #eceeef;
+    text-align: center;
+  }
+  thead th {
+    vertical-align: middle;
+    border-bottom: 0.125rem solid #eceeef;
+  }
+  tbody + tbody {
+    border-top: 0.125rem solid #eceeef;
+  }
+  tbody {
+    tr:nth-of-type(2n) {
+      background-color: rgba(0, 0, 0, .1);
+    }
+  }
+}
+
+[data-theme="dark"] table {
+  th, td {
+    border-top: 0.063rem solid $bg-dark-1;
+    color: $dark-font;
+    a {
+      color: $dark-font;
+    }
+  }
+  thead th {
+    border-bottom: 0.125rem solid $bg-dark-1;
+  }
+  tbody + tbody {
+    border-top: 0.125rem solid $bg-dark-1;
+  }
+  tbody {
+    tr:nth-of-type(2n) {
+      background-color: $bg-dark-1;
+    }
+  }
+}

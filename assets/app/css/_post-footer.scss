@@ -1,0 +1,93 @@
+/**
+  @Author 淮城一只猫
+  @Date 2019-08-09
+  @Name 主题文章页脚
+ */
+
+.site-warp {
+  .post-footer {
+    margin: 0 auto;
+    padding: 3rem 0;
+    width: 100%;
+    .author-card {
+      .author-profile-image {
+        position: relative;
+        margin-right: 0.938rem;
+        width: 3.75rem;
+        height: 3.75rem;
+        display: block;
+        border-radius: 100%;
+        object-fit: cover;
+      }
+      .avatar-wrapper {
+        position: relative;
+        margin-right: 0.9375rem;
+        width: 3.75rem;
+        height: 3.75rem;
+        display: block;
+        border-radius: 100%;
+        object-fit: cover;
+        background: #e3e9ed;
+      }
+      .author-card-content {
+        .author-card-name {
+          margin: 0.5rem 0 .125rem;
+          padding: 0;
+          font-size: 1.425rem;
+          a {
+            font-weight: 700;
+          }
+        }
+        p {
+          margin: 0;
+          line-height: 1.3em;
+        }
+      }
+    }
+    .post-footer-right {
+      flex-shrink: 0;
+      margin-left: 1.25rem;
+      .author-card-button {
+        display: block;
+        padding: 0.563rem 1rem;
+        border: 0.063rem solid #000;
+        color: #000;
+        font-size: 0.8rem;
+        line-height: 1;
+        font-weight: 500;
+        border-radius: 1.25rem;
+        transition: all .2s ease;
+      }
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .site-warp {
+    .post-footer {
+      .author-card {
+        .avatar-wrapper {
+          background: $dark-font;
+        }
+        .author-card-content {
+          .author-card-name {
+            a {
+              color: $dark-font;
+            }
+          }
+          p {
+            a {
+              color: $dark-font;
+            }
+          }
+        }
+      }
+      .post-footer-right {
+        .author-card-button {
+          border: 0.063rem solid $dark-font;
+          color: $dark-font;
+        }
+      }
+    }
+  }
+}

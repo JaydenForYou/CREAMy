@@ -1,0 +1,33 @@
+/**
+  @Author 淮城一只猫
+  @Date 2019-08-09
+  @Name 主题文章捐赠
+ */
+
+.site-warp {
+  .post-donation {
+    .btn-donation {
+      padding: 1rem;
+      i {
+        font-size: 1.225rem;
+      }
+    }
+    .collapse-donation {
+      margin-top: 2rem;
+      .card-collapse {
+        figure {
+          width: 50%;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .site-warp {
+    .post-donation {}
+  }
+}

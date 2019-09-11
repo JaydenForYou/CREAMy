@@ -1,6 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-define('CREAMy_VERSION', '1.0.5');
+define('CREAMy_VERSION', '1.0.6');
 define('__TYPECHO_GRAVATAR_PREFIX__', Helper::options()->Gravatar ? Helper::options()->Gravatar : '//cdn.v2ex.com/gravatar/');
 require_once 'lib/Utils.php';
 require_once 'lib/Comments.php';
@@ -359,6 +359,8 @@ function themeConfig($form)
   $tips = new Typecho_Widget_Helper_Form_Element_Text('tips', NULL, NULL, _t('前台公告'), _t(''));
   $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('ICP备案号'), _t(''));
   $Subtitle = new Typecho_Widget_Helper_Form_Element_Text('Subtitle', NULL, NULL, _t('站点副标题'), _t(''));
+  $alipay = new Typecho_Widget_Helper_Form_Element_Text('alipay', NULL, NULL, _t('支付宝收款二维码链接'), _t(''));
+  $wpay = new Typecho_Widget_Helper_Form_Element_Text('wpay', NULL, NULL, _t('微信收款二维码链接'), _t(''));
   $qiniu = new Typecho_Widget_Helper_Form_Element_Text('qiniu', NULL, NULL, _t('七牛云替换全站镜像'), _t('需要带http/https'));
   $form->addInput($logoUrl);
   $form->addInput($bgUrl);
@@ -373,6 +375,8 @@ function themeConfig($form)
   $form->addInput($cdn);
   $form->addInput($APPID);
   $form->addInput($APPKEY);
+  $form->addInput($alipay);
+  $form->addInput($wpay);
   $JConfig = new Typecho_Widget_Helper_Form_Element_Checkbox('JConfig',
       array(
           'enableLazyload' => '开启图片懒加载<a href="https://appelsiini.net/projects/lazyload" target="_blank">lazyload</a>',

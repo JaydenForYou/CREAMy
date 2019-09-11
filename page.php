@@ -10,7 +10,7 @@ if (!null==$this->fields->thumbnail) {
 <?php if (!Utils::isEnabled('enableComments', 'JConfig')): ?>
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <?php endif ?>
-<section class="site-hero <?=$class?>" <?php if($class!='responsive-title-no-img'): ?>style="background-image: url('<?php echo $this->fields->thumbnail ?>')"<?php endif ?> > <!-- 没有图片 添加 .responsive-title-no-img -->
+<section class="site-hero <?=$class?>" <?php if($class!='responsive-title-no-img'): ?>style="background-image: url('<?php echo $this->fields->thumbnail ?>')"<?php else: ?><?php endif ?> > <!-- 没有图片 添加 .responsive-title-no-img -->
   <div class="container">
     <div class="hero-content">
       <h1 class="post-full-title"><?php $this->title() ?></h1>
@@ -36,6 +36,33 @@ if (!null==$this->fields->thumbnail) {
         <?php endif ?>
       </section>
     </article>
+    <section class="post-donation text-center w-100">
+      <button type="button" class="btn btn-donation" data-toggle="collapse" data-target="#collapseDonation" aria-expanded="false" aria-controls="collapseDonation" title="捐赠">
+        <i class="fas fa-coffee"></i>
+      </button>
+      <div class="collapse collapse-donation" id="collapseDonation">
+        <div class="card card-body card-collapse">
+          <div class="row">
+            <?php if(!null==$this->options->alipay):?>
+              <div class="col-sm">
+                <figure class="figure">
+                  <img src="<?php $this->options->alipay; ?>" alt="支付宝捐赠" title="请使用支付宝扫一扫进行捐赠">
+                  <figcaption class="figure-caption">请使用支付宝扫一扫进行捐赠</figcaption>
+                </figure>
+              </div>
+            <? endif ?>
+            <?php if(!null==$this->options->wpay):?>
+              <div class="col-sm">
+                <figure class="figure">
+                  <img src="<?php $this->options->wpay; ?>" alt="微信捐赠" title="请使用微信扫一扫进行赞赏">
+                  <figcaption class="figure-caption">请使用微信扫一扫进行赞赏</figcaption>
+                </figure>
+              </div>
+            <? endif ?>
+          </div>
+        </div>
+      </div>
+    </section>
     <ul class="post-copyright">
       <li class="post-copyright-author">
         <strong>文章作者： </strong><?php $this->author(); ?></li>
@@ -47,6 +74,20 @@ if (!null==$this->fields->thumbnail) {
         <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
       </li>
     </ul>
+    <section class="post-footer d-flex justify-content-between align-items-center">
+      <section class="author-card d-flex justify-content-between align-items-center">
+        <?php echo $this->author->gravatar(320,'G',NULL,'author-profile-image') ?>
+        <section class="author-card-content">
+          <h4 class="author-card-name">
+            <a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
+          </h4>
+          <p><?php echo $this->options->description ;?></p>
+        </section>
+      </section>
+      <div class="post-footer-right">
+        <a class="author-card-button" href="<?php $this->author->permalink(); ?>">更多文章</a>
+      </div>
+    </section>
     <?php if ($this->allow('comment')): ?>
       <div class="post-comments">
         <!-- 这里放置评论框 -->

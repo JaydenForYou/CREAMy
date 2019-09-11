@@ -10,7 +10,7 @@
 @import "dark-mode";
 @import "header";
 @import "hero";
-@import "hero-dynamic";
+// @import "hero-dynamic";
 @import "posts-list";
 @import "footer";
 @import "fixed_tools";
@@ -18,6 +18,11 @@
 @import "post-header";
 @import "post-content";
 @import "post-copyright";
+@import "post-read-next";
+@import "post-footer";
 @import "post-comments";
+@import "post-donation";
 @import "site-pagination";
+@import "table";
+@import "toasts";
 @import "global";

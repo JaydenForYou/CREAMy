@@ -1,0 +1,44 @@
+/**
+  @Author 淮城一只猫
+  @Date 2019-09-08
+  @Name 系统通知栏样式
+ */
+
+.app-toasts {
+  position: fixed;
+  top: 4.188rem;
+  right: 0;
+  z-index: 9999;
+
+  p.tips {
+    margin: 0;
+    text-align: right;
+    font-size: 80%;
+    color: rgba(0,0,0,0.5);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .app-toasts {
+    top: 0;
+  }
+}
+
+[data-theme="dark"] {
+  .app-toasts {
+    background-color: rgba(8, 8, 8, 0.66);
+
+    .toast-header {
+      background-color: $bg-dark-1;
+      color: $dark-font;
+    }
+
+    .close {
+      color: $dark-font;
+    }
+
+    p.tips {
+      color: rgba(255,255,255,0.5);
+    }
+  }
+}
