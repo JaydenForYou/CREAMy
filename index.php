@@ -27,7 +27,11 @@ if ($this->_currentPage == ceil($this->getTotal() / $this->parameter->pageSize))
   $hidden = 'hidden';
 }
 ?>
-<section class="site-hero responsive-title-img" style="background-image: url('<?php Utils::getBackground() ?>');">
+<section class="site-hero responsive-title-img" style="background-image: url('<?php if(null!=$this->getDescription()&&!$this->is('index')){
+  echo $this->getDescription();
+}else{
+  Utils::getBackground();
+} ?>');">
   <div class="container">
     <div class="hero-content">
       <h1 class="site-name"><?php if ($this->is('category')): ?><?php $this->category('',false); ?><? else:?><?php $this->options->title(); ?><? endif ?></h1>
