@@ -87,6 +87,7 @@ if (!empty($this->options->cdn) && $this->options->cdn) {
 <?php endif ?>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('assets/app/js/app.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php $this->options->themeUrl('assets/app/js/loadmore.js'); ?>"></script>
 <?php if (Utils::isEnabled('enableLazyload', 'JConfig') && $this->is('index') || $this->is('search')): ?>
   <script src="<?php $this->options->themeUrl('assets/app/js/lazyload.js'); ?>"></script>
   <script type="text/javascript">
