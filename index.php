@@ -69,11 +69,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php endif ?>
 <?php
 $this->need('header.php');
-$hiddens = '';
+/*$hiddens = '';
 $hidden = '';
-$prev = $this->_currentPage - 1;
+$prev = $this->_currentPage - 1;*/
 $next = $this->_currentPage + 1;
-if ($this->_currentPage == 0 || $this->_currentPage == 1) {
+/*if ($this->_currentPage == 0 || $this->_currentPage == 1) {
   $hidden = 'hidden';
   $cpage = 1;
 } else {
@@ -84,7 +84,7 @@ if ($this->_currentPage == ceil($this->getTotal() / $this->parameter->pageSize))
 } elseif (ceil($this->getTotal() / $this->parameter->pageSize) == 1) {
   $hiddens = 'hidden';
   $hidden = 'hidden';
-}
+}*/
 ?>
   <section class="site-hero responsive-title-img"
            style="background-image: url('<?php if (null != $this->getDescription() && !$this->is('index')) {
@@ -167,24 +167,27 @@ if ($this->_currentPage == ceil($this->getTotal() / $this->parameter->pageSize))
       <div class="site-pagination">
         <nav aria-label="文章分页">
           <ul class="pagination">
-            <li class="page-item" <?php echo $hidden ?>>
-              <a class="page-link" href="/page/<?php echo $prev ?>" aria-label="上一页">
+            <!--            <li class="page-item" <?php /*echo $hidden */ ?>>
+              <a class="page-link" href="/page/<?php /*echo $prev */ ?>" aria-label="上一页">
                 <span aria-hidden="true">
                   <i class="fas fa-angle-left"></i>
                 </span>
               </a>
-            </li>
-            -
-            <!--            <li class="page-item"><a id="load_more" class="page-link" onclick="load_more_post()">加载更多</a></li>-->
-            <li class="page-item"><a class="page-link">第<?= $cpage ?>
-                页，共<?php echo ceil($this->getTotal() / $this->parameter->pageSize); ?>页</a></li>
-            <li class="page-item" <?php echo $hiddens ?>>
-              <a class="page-link" href="/page/<?php echo $next ?>" aria-label="下一页">
+            </li>-->
+            <div id="next">
+              <li class="page-item"><?php if (ceil($this->getTotal() / $this->parameter->pageSize) > 1): ?><a
+                  class="page-link" onclick="ajaxGetMore();return false;"
+                  href="/page/<?php echo $next ?>"">加载更多</a><?php else: ?><span>到底啦 ~</span><?php endif ?></li>
+            </div>
+            <!--            <li class="page-item"><a class="page-link">第<? /*= $cpage */ ?>
+                页，共<?php /*echo ceil($this->getTotal() / $this->parameter->pageSize); */ ?>页</a></li>-->
+            <!--            <li class="page-item" <?php /*echo $hiddens */ ?>>
+              <a class="page-link" href="/page/<?php /*echo $next */ ?>" aria-label="下一页">
                 <span aria-hidden="true">
                   <i class="fas fa-angle-right"></i>
                 </span>
               </a>
-            </li>
+            </li>-->
           </ul>
         </nav>
       </div>
