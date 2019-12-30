@@ -13,6 +13,10 @@
 [前往这里](https://valine.js.org/quickstart.html "Click Here")以获取APP ID 和 APP Key，然后再去后台设置相应的选项即可。
 
 ## 更新日志
+> * v1.0.6
+> * 优化代码
+> * 更新自带评论样式
+
 > * 添加分类目录背景图片设置（请在分类描述填入你的图片URL）
 
 > * v1.0.5
