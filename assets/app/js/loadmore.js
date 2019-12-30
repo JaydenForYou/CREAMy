@@ -10,7 +10,8 @@ function ajaxGetMore() {
     async: true,
     success: function (data) {
       result = $(data).find(".post-card");
-      nextHref = $(data).find(".next").attr("href");
+      nextHref = $(data).find(".page-link").attr("href");
+      console.log(nextHref);
       $("#blockGroup").append(result.fadeIn(500));
 
       if (nextHref != undefined) {
