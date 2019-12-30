@@ -1,6 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-define('CREAMy_VERSION', '1.0.6');
+define('CREAMy_VERSION', '1.0.7');
 define('__TYPECHO_GRAVATAR_PREFIX__', Helper::options()->Gravatar ? Helper::options()->Gravatar : '//cdn.v2ex.com/gravatar/');
 require_once 'lib/Utils.php';
 require_once 'lib/Comments.php';
@@ -378,13 +378,13 @@ function themeConfig($form)
   $form->addInput($alipay);
   $form->addInput($wpay);
   $JConfig = new Typecho_Widget_Helper_Form_Element_Checkbox('JConfig',
-      array(
-          'enableLazyload' => '开启图片懒加载<a href="https://appelsiini.net/projects/lazyload" target="_blank">lazyload</a>',
-          'enableComments' => '开启主题自带评论系统',
-          'enablePJAX' => '开启全站PJAX'
-      ),
-      null,
-      '开关设置'
+    array(
+      'enableLazyload' => '开启图片懒加载<a href="https://appelsiini.net/projects/lazyload" target="_blank">lazyload</a>',
+      'enableComments' => '开启主题自带评论系统',
+      'enablePJAX' => '开启全站PJAX'
+    ),
+    null,
+    '开关设置'
   );
   $form->addInput($JConfig->multiMode());
 }
@@ -427,10 +427,11 @@ function get_post_view($archive)
   echo $row['views'];
 }
 
-function themeInit($archive){
+function themeInit($archive)
+{
   // 判断是否是添加评论的操作
   // 为文章或页面、post操作，且包含参数`themeAction=comment`(自定义)
-  if($archive->is('single') && $archive->request->isPost() && $archive->request->is('Ajax=comment')){
+  if ($archive->is('single') && $archive->request->isPost() && $archive->request->is('Ajax=comment')) {
     // 为添加评论的操作时
     ajaxComment($archive);
   }
@@ -442,51 +443,52 @@ function themeInit($archive){
  * @param Widget_Archive $archive
  * @return void
  */
-function ajaxComment($archive){
+function ajaxComment($archive)
+{
   $options = Helper::options();
   $user = Typecho_Widget::widget('Widget_User');
   $db = Typecho_Db::get();
   // Security 验证不通过时会直接跳转，所以需要自己进行判断
   // 需要开启反垃圾保护，此时将不验证来源
-  if($archive->request->get('_') != Helper::security()->getToken($archive->request->getReferer())){
-    $archive->response->throwJson(array('status'=>0,'msg'=>_t('非法请求')));
+  if ($archive->request->get('_') != Helper::security()->getToken($archive->request->getReferer())) {
+    $archive->response->throwJson(array('status' => 0, 'msg' => _t('非法请求')));
   }
   /** 评论关闭 */
-  if(!$archive->allow('comment')){
-    $archive->response->throwJson(array('status'=>0,'msg'=>_t('评论已关闭')));
+  if (!$archive->allow('comment')) {
+    $archive->response->throwJson(array('status' => 0, 'msg' => _t('评论已关闭')));
   }
   /** 检查ip评论间隔 */
   if (!$user->pass('editor', true) && $archive->authorId != $user->uid &&
-      $options->commentsPostIntervalEnable){
+    $options->commentsPostIntervalEnable) {
     $latestComment = $db->fetchRow($db->select('created')->from('table.comments')
-        ->where('cid = ?', $archive->cid)
-        ->where('ip = ?', $archive->request->getIp())
-        ->order('created', Typecho_Db::SORT_DESC)
-        ->limit(1));
+      ->where('cid = ?', $archive->cid)
+      ->where('ip = ?', $archive->request->getIp())
+      ->order('created', Typecho_Db::SORT_DESC)
+      ->limit(1));
 
     if ($latestComment && ($options->gmtTime - $latestComment['created'] > 0 &&
-            $options->gmtTime - $latestComment['created'] < $options->commentsPostInterval)) {
-      $archive->response->throwJson(array('status'=>0,'msg'=>_t('对不起, 您的发言过于频繁, 请稍侯再次发布')));
+        $options->gmtTime - $latestComment['created'] < $options->commentsPostInterval)) {
+      $archive->response->throwJson(array('status' => 0, 'msg' => _t('对不起, 您的发言过于频繁, 请稍侯再次发布')));
     }
   }
 
   $comment = array(
-      'cid'       =>  $archive->cid,
-      'created'   =>  $options->gmtTime,
-      'agent'     =>  $archive->request->getAgent(),
-      'ip'        =>  $archive->request->getIp(),
-      'ownerId'   =>  $archive->author->uid,
-      'type'      =>  'comment',
-      'status'    =>  !$archive->allow('edit') && $options->commentsRequireModeration ? 'waiting' : 'approved'
+    'cid' => $archive->cid,
+    'created' => $options->gmtTime,
+    'agent' => $archive->request->getAgent(),
+    'ip' => $archive->request->getIp(),
+    'ownerId' => $archive->author->uid,
+    'type' => 'comment',
+    'status' => !$archive->allow('edit') && $options->commentsRequireModeration ? 'waiting' : 'approved'
   );
 
   /** 判断父节点 */
   if ($parentId = $archive->request->filter('int')->get('parent')) {
     if ($options->commentsThreaded && ($parent = $db->fetchRow($db->select('coid', 'cid')->from('table.comments')
-            ->where('coid = ?', $parentId))) && $archive->cid == $parent['cid']) {
+        ->where('coid = ?', $parentId))) && $archive->cid == $parent['cid']) {
       $comment['parent'] = $parentId;
     } else {
-      $archive->response->throwJson(array('status'=>0,'msg'=>_t('父级评论不存在')));
+      $archive->response->throwJson(array('status' => 0, 'msg' => _t('父级评论不存在')));
     }
   }
   $feedback = Typecho_Widget::widget('Widget_Feedback');
@@ -529,7 +531,7 @@ function ajaxComment($archive){
       }
     }
 
-    $expire = $options->gmtTime + $options->timezone + 30*24*3600;
+    $expire = $options->gmtTime + $options->timezone + 30 * 24 * 3600;
     Typecho_Cookie::set('__typecho_remember_author', $comment['author'], $expire);
     Typecho_Cookie::set('__typecho_remember_mail', $comment['mail'], $expire);
     Typecho_Cookie::set('__typecho_remember_url', $comment['url'], $expire);
@@ -552,36 +554,36 @@ function ajaxComment($archive){
   }
 
   if ($error = $validator->run($comment)) {
-    $archive->response->throwJson(array('status'=>0,'msg'=> implode(';',$error)));
+    $archive->response->throwJson(array('status' => 0, 'msg' => implode(';', $error)));
   }
 
   /** 添加评论 */
   if (preg_match("/[\x{4e00}-\x{9fa5}]/u", $comment['text']) == 0) {
-    $archive->response->throwJson(array('status'=>0,'msg'=>_t('评论内容请不少于一个中文汉字')));
+    $archive->response->throwJson(array('status' => 0, 'msg' => _t('评论内容请不少于一个中文汉字')));
   }
   $commentId = $feedback->insert($comment);
-  if(!$commentId){
-    $archive->response->throwJson(array('status'=>0,'msg'=>_t('评论失败')));
+  if (!$commentId) {
+    $archive->response->throwJson(array('status' => 0, 'msg' => _t('评论失败')));
   }
   Typecho_Cookie::delete('__typecho_remember_text');
   $db->fetchRow($feedback->select()->where('coid = ?', $commentId)
-      ->limit(1), array($feedback, 'push'));
+    ->limit(1), array($feedback, 'push'));
   $feedback->pluginHandle()->finishComment($feedback);
   // 返回评论数据
   $data = array(
-      'cid' => $feedback->cid,
-      'coid' => $feedback->coid,
-      'parent' => $feedback->parent,
-      'mail' => $feedback->mail,
-      'url' => $feedback->url,
-      'ip' => $feedback->ip,
-      'agent' => parseUA($feedback->agent),
-      'author' => $feedback->author,
-      'authorId' => $feedback->authorId,
-      'permalink' => $feedback->permalink,
-      'created' => $feedback->created,
-      'datetime' => $feedback->date->format('Y-m-d H:i:s'),
-      'status' => $feedback->status,
+    'cid' => $feedback->cid,
+    'coid' => $feedback->coid,
+    'parent' => $feedback->parent,
+    'mail' => $feedback->mail,
+    'url' => $feedback->url,
+    'ip' => $feedback->ip,
+    'agent' => parseUA($feedback->agent),
+    'author' => $feedback->author,
+    'authorId' => $feedback->authorId,
+    'permalink' => $feedback->permalink,
+    'created' => $feedback->created,
+    'datetime' => $feedback->date->format('Y-m-d H:i:s'),
+    'status' => $feedback->status,
   );
   // 评论内容
   ob_start();
@@ -589,7 +591,7 @@ function ajaxComment($archive){
   $data['content'] = ob_get_clean();
 
   $data['avatar'] = Typecho_Common::gravatarUrl($data['mail'], 48, Helper::options()->commentsAvatarRating, NULL, $archive->request->isSecure());
-  $archive->response->throwJson(array('status'=>1,'comment'=>$data));
+  $archive->response->throwJson(array('status' => 1, 'comment' => $data));
 }
 
 function parseUA($ua)
@@ -598,50 +600,105 @@ function parseUA($ua)
   $htmlTag = "";
   $os = null;
   $fontClass = null;
-  if (preg_match('/Windows NT 6.0/i', $ua)) {$os = "Windows Vista";
-    } elseif (preg_match('/Windows NT 6.1/i', $ua)) {$os = "Windows 7";
-    } elseif (preg_match('/Windows NT 6.2/i', $ua)) {$os = "Windows 8";
-    } elseif (preg_match('/Windows NT 6.3/i', $ua)) {$os = "Windows 8.1";
-    } elseif (preg_match('/Windows NT 10.0/i', $ua)) {$os = "Windows 10";
-    } elseif (preg_match('/Windows NT 5.1/i', $ua)) {$os = "Windows XP";
-    } elseif (preg_match('/Windows NT 5.2/i', $ua) && preg_match('/Win64/i', $ua)) {$os = "Windows XP 64 bit";
-    } elseif (preg_match('/Android ([0-9.]+)/i', $ua, $matches)) {$os = "Android " . $matches[1];
-    } elseif (preg_match('/iPhone OS ([_0-9]+)/i', $ua, $matches)) {$os = 'iPhone ' . $matches[1];
-    } elseif (preg_match('/iPad/i', $ua)) {$os = "iPad";
-    } elseif (preg_match('/Mac OS X ([_0-9]+)/i', $ua, $matches)) {$os = 'Mac OS X ' . $matches[1];
-    } elseif (preg_match('/Gentoo/i', $ua)) {$os = 'Gentoo Linux';
-    } elseif (preg_match('/Ubuntu/i', $ua)) {$os = 'Ubuntu Linux';
-    } elseif (preg_match('/Debian/i', $ua)) {$os = 'Debian Linux';
-    } elseif (preg_match('/X11; FreeBSD/i', $ua)) {$os = 'FreeBSD';
-    } elseif (preg_match('/X11; Linux/i', $ua)) {$os = 'Linux';
-    } else { $os = 'unknown os';
-    }
-  $htmlTag = '<span class="vsys">'.$os.'</span>';
+  if (preg_match('/Windows NT 6.0/i', $ua)) {
+    $os = "Windows Vista";
+  } elseif (preg_match('/Windows NT 6.1/i', $ua)) {
+    $os = "Windows 7";
+  } elseif (preg_match('/Windows NT 6.2/i', $ua)) {
+    $os = "Windows 8";
+  } elseif (preg_match('/Windows NT 6.3/i', $ua)) {
+    $os = "Windows 8.1";
+  } elseif (preg_match('/Windows NT 10.0/i', $ua)) {
+    $os = "Windows 10";
+  } elseif (preg_match('/Windows NT 5.1/i', $ua)) {
+    $os = "Windows XP";
+  } elseif (preg_match('/Windows NT 5.2/i', $ua) && preg_match('/Win64/i', $ua)) {
+    $os = "Windows XP 64 bit";
+  } elseif (preg_match('/Android ([0-9.]+)/i', $ua, $matches)) {
+    $os = "Android " . $matches[1];
+  } elseif (preg_match('/iPhone OS ([_0-9]+)/i', $ua, $matches)) {
+    $os = 'iPhone ' . $matches[1];
+  } elseif (preg_match('/iPad/i', $ua)) {
+    $os = "iPad";
+  } elseif (preg_match('/Mac OS X ([_0-9]+)/i', $ua, $matches)) {
+    $os = 'Mac OS X ' . $matches[1];
+  } elseif (preg_match('/Gentoo/i', $ua)) {
+    $os = 'Gentoo Linux';
+  } elseif (preg_match('/Ubuntu/i', $ua)) {
+    $os = 'Ubuntu Linux';
+  } elseif (preg_match('/Debian/i', $ua)) {
+    $os = 'Debian Linux';
+  } elseif (preg_match('/X11; FreeBSD/i', $ua)) {
+    $os = 'FreeBSD';
+  } elseif (preg_match('/X11; Linux/i', $ua)) {
+    $os = 'Linux';
+  } else {
+    $os = 'unknown os';
+  }
+  $htmlTag = '<span class="vsys">' . $os . '</span>';
   $browser = null;
   //解析浏览器
-  if (preg_match('#SE 2([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Sogou browser';
-    } elseif (preg_match('#360([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = '360 browser ';
-    } elseif (preg_match('#Maxthon( |\/)([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Maxthon ';
-    } elseif (preg_match('#Edge( |\/)([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Edge ';
-    } elseif (preg_match('#MicroMessenger/([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Wechat ';
-    } elseif (preg_match('#QQ/([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'QQ Mobile ';
-    } elseif (preg_match('#Chrome/([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Chrome ';
-    } elseif (preg_match('#CriOS/([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Chrome ';
-    } elseif (preg_match('#Chromium/([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Chromium ';
-    } elseif (preg_match('#Safari/([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Safari ';
-    } elseif (preg_match('#opera mini#i', $ua)) {
+  if (preg_match('#SE 2([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Sogou browser';
+  } elseif (preg_match('#360([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = '360 browser ';
+  } elseif (preg_match('#Maxthon( |\/)([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Maxthon ';
+  } elseif (preg_match('#Edge( |\/)([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Edge ';
+  } elseif (preg_match('#MicroMessenger/([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Wechat ';
+  } elseif (preg_match('#QQ/([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'QQ Mobile ';
+  } elseif (preg_match('#Chrome/([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Chrome ';
+  } elseif (preg_match('#CriOS/([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Chrome ';
+  } elseif (preg_match('#Chromium/([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Chromium ';
+  } elseif (preg_match('#Safari/([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Safari ';
+  } elseif (preg_match('#opera mini#i', $ua)) {
     preg_match('#Opera/([a-zA-Z0-9.]+)#i', $ua, $matches);
-    $browser = 'Opera Mini ';} elseif (preg_match('#Opera.([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Opera ';
-    } elseif (preg_match('#QQBrowser ([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'QQ browser ';
-    } elseif (preg_match('#UCWEB([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'UCWEB ';
-    } elseif (preg_match('#MSIE ([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Internet Explorer ';
-    } elseif (preg_match('#Trident/([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Internet Explorer 11';
-    } elseif (preg_match('#(Firefox|Phoenix|Firebird|BonEcho|GranParadiso|Minefield|Iceweasel)/([a-zA-Z0-9.]+)#i', $ua, $matches)) {$browser = 'Firefox ';
-    } else { $browser = 'unknown br';
-    }
-    $htmlTag .= "&nbsp;";
-    $htmlTag .= '<span class="vsys">'.$browser.'</span>';
-    return $htmlTag;
+    $browser = 'Opera Mini ';
+  } elseif (preg_match('#Opera.([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Opera ';
+  } elseif (preg_match('#QQBrowser ([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'QQ browser ';
+  } elseif (preg_match('#UCWEB([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'UCWEB ';
+  } elseif (preg_match('#MSIE ([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Internet Explorer ';
+  } elseif (preg_match('#Trident/([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Internet Explorer 11';
+  } elseif (preg_match('#(Firefox|Phoenix|Firebird|BonEcho|GranParadiso|Minefield|Iceweasel)/([a-zA-Z0-9.]+)#i', $ua, $matches)) {
+    $browser = 'Firefox ';
+  } else {
+    $browser = 'unknown br';
+  }
+  $htmlTag .= "&nbsp;";
+  $htmlTag .= '<span class="vsys">' . $browser . '</span>';
+  return $htmlTag;
+}
+
+function getCommentAt($coid)
+{
+  $db = Typecho_Db::get();
+  $prow = $db->fetchRow($db->select('parent')
+    ->from('table.comments')
+    ->where('coid = ? AND status = ?', $coid, 'approved'));
+  $parent = $prow['parent'];
+  if ($parent != "0") {
+    $arow = $db->fetchRow($db->select('author')
+      ->from('table.comments')
+      ->where('coid = ? AND status = ?', $parent, 'approved'));
+    $author = $arow['author'];
+    $href = '<a href="#comment-' . $parent . '" class="cute atreply">@' . $author . '</a>';
+    //$href = '@'.$author;
+    return $href;
+  } else {
+    return '';
+  }
 }
 
 
