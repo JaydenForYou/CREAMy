@@ -1,16 +1,9 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php
-if (!empty($this->options->qiniu)) {
-  $qurl = str_replace($this->options->siteUrl, $this->options->qiniu . '/', $this->options->themeUrl);
-} else {
-  $qurl = $this->options->themeUrl;
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+if (!empty($this->options->cdn) && $this->options->cdn) {
+  define('__TYPECHO_THEME_URL__', Typecho_Common::url(__TYPECHO_THEME_DIR__ . '/' . basename(dirname(__FILE__)), $this->options->cdn));
 }
-$appminjs = $qurl . '/assets/app/js/app.min.js';
-$lazyload = $qurl . '/assets/app/js/lazyload.js';
-$casper = $qurl . '/assets/app/js/casper.js';
-$comments = $qurl . '/assets/app/js/comments.js';
 ?>
-
 <footer class="site-footer">
   <div class="container d-flex justify-content-sm-between justify-content-center text-center">
     <div class="copyright">
@@ -71,7 +64,7 @@ $comments = $qurl . '/assets/app/js/comments.js';
   var APPKEY = '<?php $this->options->APPKEY()?>';
   var tongji = '<?php $this->options->tongji()?>';
 </script>
-<script src='<?= $casper ?>'></script>
+<script src='<?php $this->options->themeUrl('assets/app/js/casper.js'); ?>'></script>
 <?php if (Utils::isEnabled('enablePJAX', 'JConfig')): ?>
   <?php if (Utils::isEnabled('enableLazyload', 'JConfig')): ?>
     <script>
@@ -92,16 +85,18 @@ $comments = $qurl . '/assets/app/js/comments.js';
     var iSPJAX = false;
   </script>
 <?php endif ?>
-<script src='<?= $comments ?>'></script>
+<?php if (!Utils::isEnabled('enableComments', 'JConfig')): ?>
+  <script src='<?php $this->options->themeUrl('assets/app/js/comments.js'); ?>'></script>
+<?php endif ?>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="<?= $appminjs ?>"></script>
+<script type="text/javascript" src="<?php $this->options->themeUrl('assets/app/js/app.min.js'); ?>"></script>
 <?php if (Utils::isEnabled('enableLazyload', 'JConfig') && $this->is('index') || $this->is('search')): ?>
-  <script src="<?= $lazyload ?>"></script>
+  <script src="<?php $this->options->themeUrl('assets/app/js/lazyload.js'); ?>"></script>
   <script type="text/javascript">
     $("div.lazyload").lazyload();
   </script>
 <?php elseif (Utils::isEnabled('enableLazyload', 'JConfig') && $this->is('page') || $this->is('post')): ?>
-  <script src="<?= $lazyload ?>"></script>
+  <script src="<?php $this->options->themeUrl('assets/app/js/lazyload.js'); ?>"></script>
   <script type="text/javascript">
     $("img.lazyload").lazyload();
   </script>
