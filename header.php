@@ -1,16 +1,13 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+if (!empty($this->options->cdn) && $this->options->cdn){
+  define('__TYPECHO_THEME_URL__', Typecho_Common::url(__TYPECHO_THEME_DIR__ . '/' . basename(dirname(__FILE__)) , $this->options->cdn));
+}
+?>
 <?php //如果是ajax方式的请求就直接退出此页面使得该页面为空 ?>
 <?php if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'): ?>
   <?php return; //完成ajax方式返回，退出此页面?>
 <?php endif ?>
-<?php
-if (!empty($this->options->qiniu)) {
-  $qurl = str_replace($this->options->siteUrl, $this->options->qiniu . '/', $this->options->themeUrl);
-} else {
-  $qurl = $this->options->themeUrl;
-}
-$appmin = $qurl . '/assets/app/css/app.min.css';
-?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -46,8 +43,9 @@ $appmin = $qurl . '/assets/app/css/app.min.css';
   <link type="text/css" rel="stylesheet"
         href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"/>
   <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/app/css/style.css'); ?>">
   <link type="text/css" rel="stylesheet"
-        href="<?= $appmin ?>"/>
+        href="<?php $this->options->themeUrl('assets/app/css/app.min.css'); ?>"/>
   <?php $this->header(); ?>
 </head>
 <body class="home-template"><!-- 添加 .home-template 以便识别模板为首页 -->
