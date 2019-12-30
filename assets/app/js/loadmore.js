@@ -1,5 +1,5 @@
 function ajaxGetMore() {
-  if ($("#next").html() == "<span>到底啦 ~</span>" || $("#next .page-link").text() == "loading...") {
+  if ($("#bottom").data('status') == 1 || $("#next .page-link").text() == "loading...") {
     return false;
   }
   $("#next .page-link").text("loading...");
@@ -17,7 +17,7 @@ function ajaxGetMore() {
         $("#next a").attr("href", nextHref);
         $("#next a").text("加载更多");
       } else {
-        $("#next").html("<span>到底啦 ~</span>");
+        $("#next").html("<span id=\"bottom\" data-status=\"1\">到底啦 ~</span>");
       }
     }
   });
@@ -29,7 +29,6 @@ $(window).scroll(function () {
   var scrollHeight = $(document).height();
   var windowHeight = $(this).height();
   if (Math.abs((scrollTop + windowHeight) - scrollHeight) < 1) {
-
     ajaxGetMore();
   }
 });
