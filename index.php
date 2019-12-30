@@ -4,7 +4,7 @@
  *
  * @package CREAMy
  * @author Jayden
- * @version 1.0.6
+ * @version 1.0.7
  * @link https://iobiji.com
  */
 
