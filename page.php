@@ -111,4 +111,3 @@ if ($this->fields->thumbnail != null) {
   </div>
 </main>
 <?php $this->need('footer.php'); ?>
-
