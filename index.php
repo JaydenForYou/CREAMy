@@ -176,8 +176,8 @@ if ($this->_currentPage == ceil($this->getTotal() / $this->parameter->pageSize))
             </li>-->
             <div id="next">
               <li class="page-item"><?php if (ceil($this->getTotal() / $this->parameter->pageSize) > 1): ?><a
-                  class="page-link" onclick="ajaxGetMore();return false;"
-                  href="/page/<?php echo $next ?>"">加载更多</a><?php else: ?><span>到底啦 ~</span><?php endif ?></li>
+                  class="page-link" data-status="0" onclick="ajaxGetMore();return false;"
+                  href="/page/<?php echo $next ?>"">加载更多</a><?php else: ?><span id="bottom" data-status="1">到底啦~</span><?php endif ?></li>
             </div>
             <!--            <li class="page-item"><a class="page-link">第<? /*= $cpage */ ?>
                 页，共<?php /*echo ceil($this->getTotal() / $this->parameter->pageSize); */ ?>页</a></li>-->
