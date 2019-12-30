@@ -84,7 +84,7 @@ function threadedComments($comments, $options)
 
   <?php endif; ?>
 
-  <?php if ($this->allow('comment')): ?>
+<!--  --><?php /*if ($this->allow('comment')): */?>
     <div id="<?php $this->respondId(); ?>" class="respond">
 
       <h3 id="response" class="comments-title"><?php _e('发表留言'); ?></h3>
@@ -124,7 +124,7 @@ function threadedComments($comments, $options)
 
       </form>
     </div>
-  <?php else: ?>
-    <h3><?php _e('评论已关闭'); ?></h3>
-  <?php endif; ?>
+<!--  <?php /*else: */?>
+    <h3><?php /*_e('评论已关闭'); */?></h3>
+  --><?php /*endif; */?>
 </div>
