@@ -1,7 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-if (!empty($this->options->cdn) && $this->options->cdn){
-  define('__TYPECHO_THEME_URL__', Typecho_Common::url(__TYPECHO_THEME_DIR__ . '/' . basename(dirname(__FILE__)) , $this->options->cdn));
+if (!empty($this->options->cdn) && $this->options->cdn) {
+  define('__TYPECHO_THEME_URL__', Typecho_Common::url(__TYPECHO_THEME_DIR__ . '/' . basename(dirname(__FILE__)), $this->options->cdn));
 }
 ?>
 <?php //如果是ajax方式的请求就直接退出此页面使得该页面为空 ?>
@@ -67,12 +67,15 @@ if (!empty($this->options->cdn) && $this->options->cdn){
             </li>
             <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
             <?php while ($category->next()): ?>
-              <li class="nav-item"><a class="nav-link"
-                                      href="<?php $category->permalink(); ?>"><?php $category->name(); ?></a></li>
+              <li class="nav-item"><a class="nav-link <?php if ($this->is('category', $category->slug)) {
+                  echo 'active';
+                } ?>" href="<?php $category->permalink(); ?>"><?php $category->name(); ?></a></li>
             <?php endwhile; ?>
             <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
             <?php while ($pages->next()): ?>
-            <li class="nav-item"><a class="nav-link" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
+            <li class="nav-item"><a class="nav-link <?php if ($this->is('page', $pages->slug)) {
+                echo 'active';
+              } ?>" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
               <?php endwhile; ?>
             <li class="nav-item m-0 d-none d-md-block d-lg-block d-xl-block">
               <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search"
