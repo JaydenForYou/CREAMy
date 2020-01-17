@@ -48,23 +48,10 @@ if (!empty($this->options->cdn) && $this->options->cdn) {
 </div>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 <script>
-  //ajax加载文章
-  /*  var current_page = 1;
-
-    function load_more_post() {
-      current_page++;
-      var load_post_url = window.location.href + "index.php/page/" + current_page + "/?load_type=ajax";
-      $.get(load_post_url, function (html) {
-        console.log('加载：' + load_post_url);
-        $('#blockGroup').append($(html));
-      })
-    }*/
-
   var APPID = '<?php $this->options->APPID()?>';
   var APPKEY = '<?php $this->options->APPKEY()?>';
   var tongji = '<?php $this->options->tongji()?>';
 </script>
-<script type="text/javascript" src="<?php $this->options->themeUrl('assets/app/js/loadmore.js'); ?>"></script>
 <script src='<?php $this->options->themeUrl('assets/app/js/casper.js'); ?>'></script>
 <?php if (Utils::isEnabled('enablePJAX', 'JConfig')): ?>
   <?php if (Utils::isEnabled('enableLazyload', 'JConfig')): ?>
