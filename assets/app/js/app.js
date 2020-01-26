@@ -358,144 +358,6 @@ function rebounce(func) {
     });
   }
 }
-(function ($, pivot) {
-  $(function () {
-    //初始化顶栏透明
-    isScrollTop() ? addTopNav() : removeTopNav();
-    //滚动顶栏透明
-    $(window).scroll(function () {
-      isScrollTop() ? addTopNav() : removeTopNav();
-    });
-    // 移动端点击菜单按钮添加样式
-    $('.navbar-toggler').click(function (event) {
-      if ($(this).attr('aria-expanded') === 'false') {
-        if (isScrollTop()) {
-          $('nav.navbar').removeClass(['navbar-dark', 'top-nav']).addClass('navbar-light');
-        }
-        $('html').addClass('overflow-hidden');
-      } else {
-        if (isScrollTop()) {
-          $('nav.navbar').addClass(['navbar-dark', 'top-nav']).removeClass('navbar-light');
-        }
-        $('html').removeClass('overflow-hidden');
-      }
-    });
-    // 回到顶部
-    var returnTop = $('#return-to-top');
-    $(window).scroll(function () {
-      if ($(this).scrollTop() >= 50) {
-        returnTop.addClass('bounceInRight').removeClass('bounceOutDown')
-      } else {
-        returnTop.removeClass('bounceInRight').addClass('bounceOutDown');
-      }
-    });
-    returnTop.click(function () {
-      $('body,html').animate({
-          scrollTop: 0
-        }, 500);
-    });
-
-  });
-
-  // 文章列表动效
-  pivot.init({
-    selector: '.site-post-list .post-card-image-link',
-    sensitivity: 80,
-    touch: false
-  });
-
-  if ($('.post-content pre code').length !== 0) {
-    //Prism高亮支持
-    loadCSS('//cdn.jsdelivr.net/npm/prismjs@1.15.0/themes/prism-tomorrow.min.css');
-    loadScript('//cdn.jsdelivr.net/npm/prismjs/components/prism-core.min.js', function () {
-      loadScript('//cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js', function () {
-          //将html代码块支持高亮
-          $('.post-content pre code').attr('class', function (i, clazz) {
-            if (clazz !== undefined) {
-              return clazz.replace(/language-html/g, 'language-markup');
-            }
-          });
-          //设置高亮语言样式文件地址
-          if (window.Prism !== 'undefined') {
-            Prism.plugins.autoloader.languages_path = '//cdn.jsdelivr.net/npm/prismjs/components/';
-            Prism.highlightAll();
-          }
-        }
-      );
-    });
-    //行号
-    loadCSS('//cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css');
-    loadScript('//cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js');
-    //支持行号显示
-    $('.post-content pre').addClass('line-numbers');
-    //显示语言或者粘贴
-    loadCSS('//cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css');
-    loadScript('//cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js');
-    loadScript('//cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js');
-    loadScript('//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js');
-    loadScript('//cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js');
-  }
-
-  //图箱支持
-  if ($('.post-content img').length !== 0) {
-    loadScript('//cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js', function () {
-      var zoom = mediumZoom(document.querySelectorAll('.post-content img'), {
-        background: '#fff',
-      });
-      zoom.on('open', function (event) {
-      })
-    });
-  }
-
-  /**
-   * 日夜切换
-   */
-  var darkSwitch = document.getElementById("darkSwitch");
-  if (darkSwitch) {
-    initTheme();
-    darkSwitch.addEventListener("change", function (event) {
-      resetTheme();
-    });
-  }
-  $('.dark-switch-label-span').tooltip();
-
-  /**
-   * 添加导航样式
-   */
-  function addTopNav() {
-    $('nav.navbar').addClass('top-nav').addClass('navbar-dark').removeClass('navbar-light');
-  }
-
-  /**
-   * 移除导航样式
-   */
-  function removeTopNav() {
-    $('nav.navbar').removeClass('top-nav').removeClass('navbar-dark').addClass('navbar-light');
-  }
-
-  /**
-   * 弹窗提醒
-   */
-  if(!localStorage.noPopUp) {
-    $('#toast').toast({
-      autohide: true,
-      delay: 5000
-    }).toast('show');
-    $('#toast .close').click(function () {
-      localStorage.setItem('noPopUp', true)
-    });
-  } else {
-    $('#toast').remove();
-  }
-
-  /**
-   * 是否在页面最顶部
-   * @returns {boolean} true = 是在页面顶部
-   */
-  function isScrollTop() {
-    return $(document).scrollTop() <= 0
-  }
-})(window.jQuery, window.pivot);
 
 /**
  * 动态加载JS文件的方法
@@ -584,6 +446,183 @@ function resetTheme() {
   }
 }
 
-window.onload = function () {
+/**
+ * 是否在页面最顶部
+ * @returns {boolean} true = 是在页面顶部
+ */
+function isScrollTop() {
+  return $(document).scrollTop() <= 0
+}
+
+function log() {
   console.log('已经动态加载资源：', loadFiles);
+}
+
+/**
+ * 页面初始化要执行的事件
+ */
+function initPage() {
+  $(function () {
+    //初始化顶栏透明
+    isScrollTop() ? addTopNav() : removeTopNav();
+    //滚动顶栏透明
+    $(window).scroll(function () {
+      isScrollTop() ? addTopNav() : removeTopNav();
+    });
+    // 移动端点击菜单按钮添加样式
+    $('.navbar-toggler').click(function (event) {
+      if ($(this).attr('aria-expanded') === 'false') {
+        if (isScrollTop()) {
+          $('nav.navbar').removeClass(['navbar-dark', 'top-nav']).addClass('navbar-light');
+        }
+        $('html').addClass('overflow-hidden');
+      } else {
+        if (isScrollTop()) {
+          $('nav.navbar').addClass(['navbar-dark', 'top-nav']).removeClass('navbar-light');
+        }
+        $('html').removeClass('overflow-hidden');
+      }
+    });
+    // 回到顶部
+    var returnTop = $('#return-to-top');
+    $(window).scroll(function () {
+      if ($(this).scrollTop() >= 50) {
+        returnTop.addClass('bounceInRight').removeClass('bounceOutDown')
+      } else {
+        returnTop.removeClass('bounceInRight').addClass('bounceOutDown');
+      }
+    });
+    returnTop.click(function () {
+      $('body,html').animate({
+        scrollTop: 0
+      }, 500);
+    });
+  });
+
+  /**
+   * 文章列表动效
+   */
+  pivot.init({
+    selector: '.site-post-list .post-card-image-link',
+    sensitivity: 80,
+    touch: false
+  });
+
+  if (document.querySelector('.post-content pre code') !== null) {
+    //Prism高亮支持
+    if (typeof window.Prism === 'undefined') {
+      loadCSS('//cdn.jsdelivr.net/npm/prismjs@1.15.0/themes/prism-tomorrow.min.css');
+      loadScript('//cdn.jsdelivr.net/npm/prismjs/components/prism-core.min.js', function () {
+        loadScript('//cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js', function () {
+            //将html代码块支持高亮
+            $('.post-content pre code').attr('class', function (i, clazz) {
+              if (clazz !== undefined) {
+                return clazz.replace(/language-html/g, 'language-markup');
+              }
+            });
+            //设置高亮语言样式文件地址
+            if (window.Prism !== 'undefined') {
+              Prism.plugins.autoloader.languages_path = '//cdn.jsdelivr.net/npm/prismjs/components/';
+              Prism.highlightAll();
+            }
+          }
+        );
+      });
+      //行号
+      loadCSS('//cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css');
+      loadScript('//cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js');
+      //支持行号显示
+      $('.post-content pre').addClass('line-numbers');
+      //显示语言或者粘贴
+      loadCSS('//cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css');
+      loadScript('//cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js');
+      loadScript('//cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js');
+      loadScript('//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js');
+      loadScript('//cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js');
+    } else {
+      //将html代码块支持高亮
+      $('.post-content pre code').attr('class', function (i, clazz) {
+        if (clazz !== undefined) {
+          return clazz.replace(/language-html/g, 'language-markup');
+        }
+      });
+      //设置高亮语言样式文件地址
+      if (window.Prism !== 'undefined') {
+        Prism.plugins.autoloader.languages_path = '//cdn.jsdelivr.net/npm/prismjs/components/';
+        Prism.highlightAll();
+      }
+      //支持行号显示
+      $('.post-content pre').addClass('line-numbers');
+    }
+  }
+
+  /**
+   * 图箱支持
+   */
+  if ($('.post-content img').length !== 0) {
+    var initConfig = function() {
+      var zoom = mediumZoom(document.querySelectorAll('.post-content img'), {
+        background: '#fff',
+      });
+      zoom.on('open', function (event) {
+      });
+      zoom.detach('img.kg-bookmark-icon', '.kg-bookmark-thumbnail img')
+    };
+    if (typeof window.mediumZoom === 'undefined') {
+      loadScript('//cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js', function () {
+        initConfig();
+      });
+    } else {
+      initConfig();
+    }
+  }
+
+  /**
+   * 日夜切换
+   */
+  var darkSwitch = document.getElementById("darkSwitch");
+  if (darkSwitch) {
+    initTheme();
+    darkSwitch.addEventListener("change", function (event) {
+      resetTheme();
+    });
+  }
+
+  /**
+   * 添加导航样式
+   */
+  function addTopNav() {
+    $('nav.navbar').addClass('top-nav').addClass('navbar-dark').removeClass('navbar-light');
+  }
+
+  /**
+   * 移除导航样式
+   */
+  function removeTopNav() {
+    $('nav.navbar').removeClass('top-nav').removeClass('navbar-dark').addClass('navbar-light');
+  }
+
+  /**
+   * 弹窗提醒
+   */
+  if(!Boolean(localStorage.noPopUp)) {
+    $('#toast').toast({
+      autohide: true,
+      delay: 5000
+    }).toast('show');
+    $('#toast .close').click(function () {
+      localStorage.setItem('noPopUp', true)
+    });
+  } else {
+    $('#toast').toast('hide');
+  }
+}
+
+// 页面初始化执行
+$(document).ready(function () {
+  initPage();
+})
+
+window.onload = function () {
+  log();
 };
