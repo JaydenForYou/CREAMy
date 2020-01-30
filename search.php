@@ -21,8 +21,8 @@ if ($this->_currentPage == ceil($this->getTotal() / $this->parameter->pageSize))
 <section class="site-hero responsive-title-img" style="background-image: url('<?php Utils::getBackground() ?>');">
   <div class="container">
     <div class="hero-content">
-      <h1 class="site-name"><?php if ($this->is('category')): ?><?php $this->category('',false); ?><? else:?><?php $this->options->title(); ?><? endif ?></h1>
-      <h2 class="site-description"><?php if ($this->is('category')): ?>A collection of <?php echo Utils::getCnums($this->category) ?> 篇文章 <? else:?><?php if(!null==$this->options->Subtitle){echo $this->options->Subtitle;} ?><? endif ?></h2>
+      <h1 class="site-name"><?php if ($this->is('category')): ?><?php $this->category('',false); ?><? else:?><?php $this->options->title(); ?><?php endif ?></h1>
+      <h2 class="site-description"><?php if ($this->is('category')): ?>A collection of <?php echo Utils::getCnums($this->category) ?> 篇文章 <? else:?><?php if(!null==$this->options->Subtitle){echo $this->options->Subtitle;} ?><?php endif ?></h2>
     </div>
   </div>
 </section>
