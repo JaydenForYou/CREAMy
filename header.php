@@ -4,10 +4,6 @@ if (!empty($this->options->cdn) && $this->options->cdn) {
   define('__TYPECHO_THEME_URL__', Typecho_Common::url(__TYPECHO_THEME_DIR__ . '/' . basename(dirname(__FILE__)), $this->options->cdn));
 }
 ?>
-<?php //如果是ajax方式的请求就直接退出此页面使得该页面为空 ?>
-<?php if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'): ?>
-  <?php return; //完成ajax方式返回，退出此页面?>
-<?php endif ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -75,7 +71,7 @@ if (!empty($this->options->cdn) && $this->options->cdn) {
             <?php while ($pages->next()): ?>
             <li class="nav-item"><a class="nav-link <?php if ($this->is('page', $pages->slug)) {
                 echo 'active';
-              } ?>" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
+              } ?>" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a></li>
               <?php endwhile; ?>
             <li class="nav-item m-0 d-none d-md-block d-lg-block d-xl-block">
               <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search"
