@@ -108,7 +108,7 @@ if ($this->_currentPage == ceil($this->getTotal() / $this->parameter->pageSize))
       </nav>
     </div>
     <?php else: ?>
-    <p>WHAT ARE YOU LOOKING FOR?</p>
+      <p style="text-align: center"><strong>WHAT ARE YOU LOOKING FOR?</strong></p>
     <?php endif ?>
   </div>
 </main>
