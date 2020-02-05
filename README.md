@@ -1,5 +1,7 @@
 # CREAMy
 一款简洁的TYPECHO主题
+# 新主题已发布，如需体验请前往https://github.com/JaydenForYou/Spring
+
 ## 写在前面
 主题前端来自[GITHUB-Frenemy](https://github.com/JaxsonWang/Frenemy "GITHUB-Frenemy")
 一个无聊的下午，一个无聊的我，看到这个项目，挺喜欢这个前端的，就来写写一款tp的主题吧。
