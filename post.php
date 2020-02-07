@@ -52,7 +52,7 @@ if ($this->fields->thumbnail != null) {
               <?php if ($this->options->alipay != null): ?>
                 <div class="col-sm">
                   <figure class="figure">
-                    <img src="<?=$this->options->alipay; ?>" alt="支付宝捐赠" title="请使用支付宝扫一扫进行捐赠">
+                    <img src="<?= $this->options->alipay; ?>" alt="支付宝捐赠" title="请使用支付宝扫一扫进行捐赠">
                     <figcaption class="figure-caption">请使用支付宝扫一扫进行捐赠</figcaption>
                   </figure>
                 </div>
@@ -60,7 +60,7 @@ if ($this->fields->thumbnail != null) {
               <?php if ($this->options->wpay != null): ?>
                 <div class="col-sm">
                   <figure class="figure">
-                    <img src="<?=$this->options->wpay; ?>" alt="微信捐赠" title="请使用微信扫一扫进行赞赏">
+                    <img src="<?= $this->options->wpay; ?>" alt="微信捐赠" title="请使用微信扫一扫进行赞赏">
                     <figcaption class="figure-caption">请使用微信扫一扫进行赞赏</figcaption>
                   </figure>
                 </div>
@@ -69,7 +69,7 @@ if ($this->fields->thumbnail != null) {
           </div>
         </div>
       </section>
-      <ul class="post-copyright">
+      <ul class="post-copyright autoline">
         <li class="post-copyright-author">
           <strong>文章作者： </strong><?php $this->author(); ?></li>
         <li class="post-copyright-link">
@@ -112,4 +112,10 @@ if ($this->fields->thumbnail != null) {
       <?php endif; ?>
     </div>
   </main>
+  <style>
+    .autoline {
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+  </style>
 <?php $this->need('footer.php'); ?>
