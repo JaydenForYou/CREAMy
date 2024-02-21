@@ -383,7 +383,7 @@ function themeConfig($form)
       'enableComments' => '开启主题自带评论系统',
       'enablePJAX' => '开启全站PJAX'
     ),
-    null,
+    [],
     '开关设置'
   );
   $form->addInput($JConfig->multiMode());
